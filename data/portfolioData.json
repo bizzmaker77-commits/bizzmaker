@@ -1,0 +1,1121 @@
+{
+  "showcaseProjects": [
+    {
+      "id": "pqjs01et7p",
+      "title": "AI Property Promo",
+      "category": "AI Videos",
+      "industry": "Real Estate",
+      "metric": "3.8x",
+      "metricLabel": "Ad return",
+      "description": "AI-assisted property video concepting and short-form creative built for paid and organic distribution.",
+      "tags": [
+        "AI Video",
+        "Reels",
+        "Paid Ads"
+      ],
+      "accent": "orange",
+      "icon": "movie"
+    },
+    {
+      "id": "roumresxwu",
+      "title": "Property Listing Website",
+      "category": "Website & SEO",
+      "industry": "Real Estate",
+      "metric": "+142%",
+      "metricLabel": "Organic traffic",
+      "description": "A conversion-focused property portal with SEO pages, lead capture, and campaign-ready landing sections.",
+      "tags": [
+        "Static Website",
+        "Local SEO",
+        "Lead Forms"
+      ],
+      "accent": "blue",
+      "icon": "language"
+    },
+    {
+      "id": "ujgv22n3e7",
+      "title": "Finance Dashboard",
+      "category": "Website & SEO",
+      "industry": "Finance",
+      "metric": "+78%",
+      "metricLabel": "Qualified leads",
+      "description": "A modern dashboard-style web experience for finance education, investor trust, and measurable inquiries.",
+      "tags": [
+        "Dashboard UI",
+        "Content SEO",
+        "Analytics"
+      ],
+      "accent": "blue",
+      "icon": "query_stats"
+    }
+  ],
+  "industries": [
+    {
+      "name": "Real Estate",
+      "description": "Websites, campaigns, AI property promotions, creative branding, and real estate reels.",
+      "projects": [
+        {
+          "title": "Property Listing Website",
+          "type": "Website & SEO"
+        },
+        {
+          "title": "ANV Realty Website",
+          "type": "Website & SEO"
+        },
+        {
+          "title": "Real Estate Lead Campaign",
+          "type": "Campaigns"
+        },
+        {
+          "title": "AI Property Promo",
+          "type": "AI Videos"
+        },
+        {
+          "title": "Real Estate Instagram Reel",
+          "type": "Reels"
+        }
+      ]
+    },
+    {
+      "name": "Finance",
+      "description": "Finance dashboards, investment campaigns, branding creatives, and educational reels.",
+      "projects": [
+        {
+          "title": "Finance Awareness Reel",
+          "type": "Reels"
+        },
+        {
+          "title": "RR Capital Promo",
+          "type": "AI Videos"
+        },
+        {
+          "title": "Finance Social Creative",
+          "type": "Creative Content"
+        },
+        {
+          "title": "TaxClair AI Promo",
+          "type": "AI Videos"
+        },
+        {
+          "title": "Investment Campaign",
+          "type": "Campaigns"
+        },
+        {
+          "title": "Finance Dashboard",
+          "type": "Website & SEO"
+        }
+      ]
+    },
+    {
+      "name": "Education",
+      "description": "Educational websites, admission campaigns, student-focused creatives, and promotional reels.",
+      "projects": [
+        {
+          "title": "Admission Campaign",
+          "type": "Campaigns"
+        },
+        {
+          "title": "Educational AI Video",
+          "type": "AI Videos"
+        },
+        {
+          "title": "Student Awareness Reel",
+          "type": "Reels"
+        },
+        {
+          "title": "School Website",
+          "type": "Website & SEO"
+        }
+      ]
+    },
+    {
+      "name": "Hospitality",
+      "description": "Hotel booking platforms, restaurant campaigns, AI hospitality promos, and social media reels.",
+      "projects": [
+        {
+          "title": "Restaurant Campaign",
+          "type": "Campaigns"
+        },
+        {
+          "title": "Hospitality Reel",
+          "type": "Reels"
+        },
+        {
+          "title": "Hotel Booking Website",
+          "type": "Website & SEO"
+        },
+        {
+          "title": "AI Hotel Promo",
+          "type": "AI Videos"
+        }
+      ]
+    },
+    {
+      "name": "Solar",
+      "description": "Solar websites, green energy campaigns, AI solar videos, and promotional clean energy reels.",
+      "projects": [
+        {
+          "title": "Solar Landing Page",
+          "type": "Website & SEO"
+        },
+        {
+          "title": "Green Energy Campaign",
+          "type": "Campaigns"
+        },
+        {
+          "title": "KwikM Solar Promo",
+          "type": "AI Videos"
+        }
+      ]
+    },
+    {
+      "name": "Agriculture",
+      "description": "Agricultural websites, farming campaigns, AI agro videos, and promotional sustainable agriculture reels.",
+      "projects": [
+        {
+          "title": "Mack Agro Promo",
+          "type": "AI Videos"
+        },
+        {
+          "title": "Agricultural Landing Page",
+          "type": "Website & SEO"
+        },
+        {
+          "title": "Sustainable Farm Campaign",
+          "type": "Campaigns"
+        }
+      ]
+    },
+    {
+      "name": "Healthcare",
+      "description": "Healthcare websites, awareness campaigns, AI medical videos, and promotional content.",
+      "projects": [
+        {
+          "title": "Dr. Ritesh Gupta Promo",
+          "type": "AI Videos"
+        },
+        {
+          "title": "Healthcare Campaign",
+          "type": "Campaigns"
+        },
+        {
+          "title": "AI Medical Promo",
+          "type": "AI Videos"
+        },
+        {
+          "title": "Healthcare Branding Creative",
+          "type": "Creative Content"
+        },
+        {
+          "title": "Hospital Website",
+          "type": "Website & SEO"
+        }
+      ]
+    },
+    {
+      "name": "Construction",
+      "description": "All-in-one Construction ERP & Project Management software showcase, web portal, and local SEO campaign.",
+      "projects": [
+        {
+          "title": "Hitoffice Construction ERP",
+          "type": "Website & SEO"
+        }
+      ]
+    }
+  ],
+  "otherProjects": [
+    {
+      "title": "Custom Dashboard Integration",
+      "type": "Website & SEO"
+    },
+    {
+      "title": "Product Launch Promotional Reel",
+      "type": "Reels"
+    },
+    {
+      "title": "Corporate Identity Redesign",
+      "type": "Creative Content"
+    },
+    {
+      "title": "AI Voice Agent Demo Video",
+      "type": "AI Videos"
+    },
+    {
+      "title": "SaaS Platform Launch Campaign",
+      "type": "Campaigns"
+    },
+    {
+      "title": "E-commerce Store Development",
+      "type": "Website & SEO"
+    }
+  ],
+  "creativeGroups": [
+    {
+      "industry": "Real Estate",
+      "description": "Websites, campaigns, AI property promotions, creative branding, and real estate reels.",
+      "images": [
+        {
+          "src": "/creative_content/RealStatecreative.jpeg",
+          "title": "Real Estate Brand Creative",
+          "description": "High-impact branding and promotional creative for real estate marketing campaigns.",
+          "globalIndex": 0,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Creative1.jpeg",
+          "title": "Luxury Villa Showcase",
+          "description": "Branding creative for high-end residential real estate listing.",
+          "globalIndex": 1,
+          "type": "image"
+        },
+        {
+          "src": "https://anvreealty.com/",
+          "thumbnail": "/uploads/Anv_reality.jpg",
+          "title": "ANV Realty Website",
+          "description": "Premium real estate and preleased properties website showcase. High-performing landing portal with optimized lead acquisition flows.",
+          "globalIndex": 2,
+          "type": "website"
+        },
+        {
+          "src": "/creative_content/RealState9.jpeg",
+          "title": "Avasa Grassland Plots",
+          "description": "Premium plotted development by Naiknavare Developers in Chakan, Pune.",
+          "globalIndex": 3,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState10.jpeg",
+          "title": "Varistha Elite Residences",
+          "description": "Luxury 3 & 4 BHK homes with premium amenities and spacious residences.",
+          "globalIndex": 4,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState11.jpeg",
+          "title": "Swapna Bhumi Badlapur",
+          "description": "Ready possession 1 & 2 BHK homes in a prime location in City Badlapur.",
+          "globalIndex": 5,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState12.jpeg",
+          "title": "Premium Residences Hyderabad",
+          "description": "Iconic 3 & 4 BHK residences with 75% open spaces and world-class amenities.",
+          "globalIndex": 6,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState13.jpeg",
+          "title": "Varistha Icon Luxury Homes",
+          "description": "Ready to move premium 3 & 4 BHK luxury homes with a 5-star clubhouse.",
+          "globalIndex": 7,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState14.jpeg",
+          "title": "Swapna Bhumi Eid Promo",
+          "description": "Festive promotional campaign for 1 & 2 BHK ready to move homes in Badlapur.",
+          "globalIndex": 8,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState1.jpeg",
+          "title": "Modern Home Showcase",
+          "description": "Clean, high-impact marketing design for modern residential listings.",
+          "globalIndex": 9,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState2.jpeg",
+          "title": "Luxury Villa Feature",
+          "description": "Elegant flyer highlighting upscale property details and high-end aesthetics.",
+          "globalIndex": 10,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState3.jpeg",
+          "title": "Contemporary Property Promo",
+          "description": "Visual branding creative showcasing structural elegance and open floor plans.",
+          "globalIndex": 11,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState4.jpeg",
+          "title": "Premium Living Spaces",
+          "description": "Premium promotional content focusing on interior layout and design aesthetics.",
+          "globalIndex": 12,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState5.jpeg",
+          "title": "Exclusive Villa Spotlight",
+          "description": "High-quality campaign creative built to capture attention for premium listings.",
+          "globalIndex": 13,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState6.jpeg",
+          "title": "Modern Residential Flyer",
+          "description": "Polished design showcasing suburban homes with optimized call-to-action layout.",
+          "globalIndex": 14,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState7.jpeg",
+          "title": "Luxury Estate Presentation",
+          "description": "Aesthetic real estate advertising banner highlighting premium property features.",
+          "globalIndex": 15,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState8.jpeg",
+          "title": "Architectural Design Feature",
+          "description": "Campaign visual highlighting modern architecture and premium materials of top listings.",
+          "globalIndex": 16,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/RealState24.jpeg",
+          "title": "Topaz Towers Charholi Pune",
+          "description": "Premium 2 & 3 BHK spacious homes with unique butterfly concept and premium amenities.",
+          "globalIndex": 17,
+          "type": "image"
+        },
+        {
+          "src": "https://youtube.com/shorts/CGmclmt0ibU?feature=share",
+          "title": "Luxury Villa Walkthrough",
+          "description": "A premium walkthrough reel showcasing high-end interior spaces and architecture of a luxury villa.",
+          "globalIndex": 250,
+          "type": "reel"
+        },
+        {
+          "src": "https://youtu.be/uxlAeIZCY1w",
+          "title": "Modern Apartment Tour",
+          "description": "An engaging real estate reel showing aesthetic decor, layout, and lighting in a modern urban apartment.",
+          "globalIndex": 251,
+          "type": "reel"
+        },
+        {
+          "src": "https://youtube.com/shorts/pogRO6aMOes?feature=share",
+          "title": "Property Listing Promo",
+          "description": "A dynamic and high-impact short-form property promo video highlighting premium real estate spaces.",
+          "globalIndex": 252,
+          "type": "reel"
+        },
+        {
+          "src": "https://youtube.com/shorts/APpxjSt5LLw?si=4r68FMnAWGrdhhxA",
+          "title": "Realistic AI Property Promo",
+          "description": "An immersive AI-assisted property promo video showcasing realistic real estate environments.",
+          "globalIndex": 253,
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "industry": "Education",
+      "description": "Educational websites, admission campaigns, student-focused creatives, and promotional reels.",
+      "images": [
+        {
+          "src": "/creative_content/Educational8.jpeg",
+          "title": "Ayush Vikas Foundation Admissions",
+          "description": "Admission open campaign for BNYS and BPT degrees with direct and online admission options.",
+          "globalIndex": 10,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Educationcreative.jpeg",
+          "title": "Intraedu Smart Learning Panel",
+          "description": "Interactive AI-powered learning panel for schools and students.",
+          "globalIndex": 11,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Education2creative.jpeg",
+          "title": "Adarsh Tuition Classes",
+          "description": "Foundation courses for 3rd to 12th standard State Board, CBSE, NEET & CET.",
+          "globalIndex": 12,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Education3creative.jpeg",
+          "title": "Little Genius Playschool Admissions",
+          "description": "Admissions open for Play Group, Nursery, L.K.G. and U.K.G. programs.",
+          "globalIndex": 13,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Education4creative.jpeg",
+          "title": "UPSC Decoded Foundation Courses",
+          "description": "Foundation program and competitive exam coaching for 11th & 12th students.",
+          "globalIndex": 14,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Education5creative.jpeg",
+          "title": "KodeWitz Remote Internship",
+          "description": "100% remote IT internship programs with expert mentorship and live projects.",
+          "globalIndex": 15,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Creative3.jpeg",
+          "title": "Global University Banner",
+          "description": "Promotional visual for academic programs and admissions.",
+          "globalIndex": 16,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Creative4.jpeg",
+          "title": "Online Learning Poster",
+          "description": "E-learning platform advertisement graphic designed for campaigns.",
+          "globalIndex": 17,
+          "type": "image"
+        },
+        {
+          "src": "https://youtube.com/shorts/CqpNv45IQBI",
+          "title": "UPSC DECODED",
+          "description": "An educational guide and course preview from UPSC DECODED, highlighting exam strategies and academic content.",
+          "globalIndex": 204,
+          "type": "youtube"
+        },
+        {
+          "src": "https://youtube.com/shorts/pd6kbpNsp5M",
+          "title": "Little Genius",
+          "description": "An engaging and fun promotional video highlighting early childhood learning, creative activities, and classes at Little Genius.",
+          "globalIndex": 207,
+          "type": "youtube"
+        },
+        {
+          "src": "https://youtube.com/shorts/3BNF1HUdHUo",
+          "title": "Paath Study",
+          "description": "An interactive educational overview and study session guide from Paath Study, designed to assist student learning and academic performance.",
+          "globalIndex": 209,
+          "type": "youtube"
+        },
+        {
+          "src": "/Campaign/EducationCampaign.jpeg",
+          "title": "Education Admission Campaign",
+          "description": "Targeted digital marketing campaign focusing on school and college admissions, enrollments, and academic awareness.",
+          "globalIndex": 300,
+          "type": "campaign"
+        }
+      ]
+    },
+    {
+      "industry": "Healthcare",
+      "description": "Healthcare websites, awareness campaigns, AI medical videos, and promotional content.",
+      "images": [
+        {
+          "src": "/creative_content/HealthcareCreative.jpeg",
+          "title": "Reliv Pain Clinic & Wellness Centre",
+          "description": "Advanced pain management and holistic care for lasting relief.",
+          "globalIndex": 30,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Healthcare2Creative.jpeg",
+          "title": "Dr. Rajguru Hair Care Clinic",
+          "description": "Expert trichologist consultation for hair fall, dandruff, and poor nutrition causes.",
+          "globalIndex": 31,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/healthcare3Creative.jpeg",
+          "title": "Apple Multispeciality Hospital",
+          "description": "Safe and affordable delivery packages with complete mother and baby care.",
+          "globalIndex": 32,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Healthcare4.jpeg",
+          "title": "Ayurmor Business Opportunity",
+          "description": "Start your own herbal business with Zeyora and Ayurmor's range of products.",
+          "globalIndex": 33,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Oldagehome.jpeg",
+          "title": "Tejomay Senior Citizen Care",
+          "description": "Comfortable living arrangements for seniors with healthy meals and meditation sessions.",
+          "globalIndex": 34,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Oldagehome2.jpeg",
+          "title": "Tejomay Vrudhashram",
+          "description": "Respectful and caring senior citizen home with spiritual support and medical care.",
+          "globalIndex": 35,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Oldagehome3.jpeg",
+          "title": "Tejomay Old Age Home",
+          "description": "Joyful living for seniors with clean, ventilated rooms and a supportive community.",
+          "globalIndex": 36,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Opticalscreative.jpeg",
+          "title": "Shri Renuka Optical Glasses",
+          "description": "Stylish frames and advanced lenses with free eye check-up offers.",
+          "globalIndex": 37,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Opticalscretive.jpeg",
+          "title": "Shri Renuka Optical Sunglasses",
+          "description": "Premium eyewear and sunglasses with special discount offers.",
+          "globalIndex": 38,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Creative2.jpeg",
+          "title": "Healthcare Lead Campaign",
+          "description": "Digital marketing campaign designed to help doctors, clinics, and hospitals generate quality leads.",
+          "globalIndex": 39,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Creative5.jpeg",
+          "title": "Healthcare Digital Marketing Campaign",
+          "description": "An ad creative and landing page concept designed for B2B lead generation targeting doctors and clinics.",
+          "globalIndex": 40,
+          "type": "image"
+        },
+        {
+          "src": "https://youtube.com/shorts/QIh7twZ3mV4",
+          "title": "Apple Multi Specialist Healthcare",
+          "description": "An AI-assisted promotional video highlighting hospital infrastructure, expert doctors, and advanced healthcare services at Apple Multi Specialist Healthcare.",
+          "globalIndex": 208,
+          "type": "youtube"
+        },
+        {
+          "src": "/Campaign/HealthcareCampaign.jpeg",
+          "title": "Healthcare Clinic Campaign",
+          "description": "A patient acquisition and awareness campaign built for doctors, specialty hospitals, and wellness clinics.",
+          "globalIndex": 304,
+          "type": "campaign"
+        }
+      ]
+    },
+    {
+      "industry": "Finance",
+      "description": "Finance dashboards, investment campaigns, branding creatives, and educational reels.",
+      "images": [
+        {
+          "src": "/creative_content/Financecreative9.jpeg",
+          "title": "LIC Agent Recruitment",
+          "description": "Career opportunity campaign for LIC agents highlighting flexibility and unlimited commission.",
+          "globalIndex": 19,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Financexreative.jpeg",
+          "title": "Loan Against Property",
+          "description": "Promotional banner for fast, hassle-free property loans with quick approval.",
+          "globalIndex": 20,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Financecreative2.jpeg",
+          "title": "Cashcow Finserve Loan Solutions",
+          "description": "Personal, business, property, and car loans from a trusted financial partner.",
+          "globalIndex": 21,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Financecreative3.jpeg",
+          "title": "Cashcow Finserve Partnership",
+          "description": "Trusted financial partner offering fast and secure loan solutions.",
+          "globalIndex": 22,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Financecreative4.jpeg",
+          "title": "Taxclair ITR Services",
+          "description": "Fast, easy, and affordable Income Tax Return filing with expert support.",
+          "globalIndex": 23,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Financecreative5.jpeg",
+          "title": "Taxclair ITR Billboard",
+          "description": "Outdoor advertising creative for affordable ITR filing services starting at ₹499.",
+          "globalIndex": 24,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Financecreative6.jpeg",
+          "title": "ClaimAtoZ Insurance Support",
+          "description": "Expert guidance and strong case support for rejected or mis-sold insurance claims.",
+          "globalIndex": 25,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Financecreative7.jpeg",
+          "title": "Shree HR PF & ESIC Services",
+          "description": "HR compliance services including PF & ESIC returns filing and salary management.",
+          "globalIndex": 26,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Finance5.jpeg",
+          "title": "Demat Account Opening Campaign",
+          "description": "Expert demat account management, trade suggestions, and complete portfolio handling.",
+          "globalIndex": 27,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/ITRFinance.jpeg",
+          "title": "ITR Finance Creative",
+          "description": "Tax filing and ITR services promotional creative for digital campaigns.",
+          "globalIndex": 27,
+          "type": "image"
+        },
+        {
+          "src": "https://youtube.com/shorts/4K5K4USvQ-0",
+          "title": "Viyom Finance Services (Promo)",
+          "description": "A high-impact promotional video for Viyom Finance Services highlighting wealth growth, loans, and investment advisory.",
+          "globalIndex": 210,
+          "type": "youtube"
+        },
+        {
+          "src": "https://youtube.com/shorts/QheeYMmcdn4",
+          "title": "Quick Personal Loans",
+          "description": "An informative video guide on personal loans, instant approval options, and flexible repayment schemes.",
+          "globalIndex": 211,
+          "type": "youtube"
+        },
+        {
+          "src": "/Campaign/FinanceCampaign.jpeg",
+          "title": "Finance Advisory Campaign",
+          "description": "A lead generation and conversion-focused performance marketing campaign designed for financial service advisors.",
+          "globalIndex": 301,
+          "type": "campaign"
+        },
+        {
+          "src": "/Campaign/FinanceCampaign2.jpeg",
+          "title": "Finance Wealth Campaign",
+          "description": "Strategic marketing campaign focusing on wealth management, investment trust, and retirement planning.",
+          "globalIndex": 302,
+          "type": "campaign"
+        },
+        {
+          "src": "/creative_content/Educational9.jpeg",
+          "title": "Maruti Finance Home Loan",
+          "description": "Independence Day promotional creative for home loans with zero processing fees and up to 90% funding.",
+          "globalIndex": 112,
+          "type": "image"
+        },
+        {
+          "src": "https://youtu.be/HNj6t5O5jGc?si=8lClyV-k_gGSPPfi",
+          "title": "Siddhart Cars",
+          "description": "An engaging AI-assisted promotional video.",
+          "globalIndex": 255,
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "industry": "Hotels and Resorts",
+      "description": "Premium hotel and resort promo videos, hospitality campaigns, and vacation stays.",
+      "images": [
+        {
+          "src": "https://youtu.be/t1ybgC0M8Nc?si=dYy17iJ2qNWQt-o4",
+          "title": "Hilltop Karjat",
+          "description": "An engaging AI-assisted promotional video highlighting the scenic beauty and hospitality of Hilltop Karjat.",
+          "globalIndex": 258,
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "industry": "Hospitality & Food",
+      "description": "Hotel booking platforms, restaurant campaigns, food brand creatives, and social media reels.",
+      "images": [
+        {
+          "src": "/creative_content/HotelAndResort.jpeg",
+          "title": "Canal Touch Resort Getaway",
+          "description": "Family-friendly weekend getaway with canal-side rooms and nature views.",
+          "globalIndex": 50,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/HotelandResort2.jpeg",
+          "title": "Canal Touch Resort Rooms",
+          "description": "Experience nature's paradise with comfortable resort stays near Mumbai & Pune.",
+          "globalIndex": 51,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/HotelAndResorts3.jpeg",
+          "title": "Hayum Hotel Management",
+          "description": "Free hotel management training with accommodation, meals, and real 5-star experience.",
+          "globalIndex": 52,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/foodcreative1.jpeg",
+          "title": "Hayat Foods Frozen Meals",
+          "description": "High-quality frozen food supply for cafes, restaurants, and cloud kitchens.",
+          "globalIndex": 53,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/foodcreative2.jpeg",
+          "title": "Hayat Foods Special Meals",
+          "description": "Perfectly prepared quality frozen meals to make every bite lazeez.",
+          "globalIndex": 54,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Creative6.jpeg",
+          "title": "Restaurant Brand Campaign",
+          "description": "High-quality lead generation and marketing flyer for dining brands.",
+          "globalIndex": 5,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Creative9.jpeg",
+          "title": "Gourmet Bistro Banner",
+          "description": "Aesthetic culinary advertising graphic for restaurant promotions.",
+          "globalIndex": 8,
+          "type": "image"
+        },
+        {
+          "src": "https://youtube.com/shorts/eP3mbrEjEgA",
+          "title": "Hayat Food",
+          "description": "An appetizing preview showcasing Hayat Food's culinary items, gourmet dishes, and hospitality experiences.",
+          "globalIndex": 205,
+          "type": "youtube"
+        },
+        {
+          "src": "/Campaign/ResortsCampaign.jpeg",
+          "title": "Luxury Resort Booking Campaign",
+          "description": "High-impact advertising campaign optimized for luxury resort stays, hotel bookings, and dining promotions.",
+          "globalIndex": 305,
+          "type": "campaign"
+        }
+      ]
+    },
+    {
+      "industry": "Solar",
+      "description": "Solar websites, green energy campaigns, AI solar videos, and promotional clean energy reels.",
+      "images": [
+        {
+          "src": "/creative_content/Solar.jpeg",
+          "title": "Sun Astra Energy Solutions",
+          "description": "Avoid common mistakes with solar system sizing and get up to ₹78,000 subsidy.",
+          "globalIndex": 60,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Solarcreative2.jpeg",
+          "title": "Sun Astra Solar Engineering",
+          "description": "Premium solar engineering with high ROI, fast installation, and free savings consultation.",
+          "globalIndex": 61,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/SolarCreative3.jpeg",
+          "title": "Sun Astra Engineering Solutions",
+          "description": "Turn sunlight into lifetime savings with premium components and expert installation.",
+          "globalIndex": 62,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Solarcreative4.jpeg",
+          "title": "Sun Astra Zero Bill Solar",
+          "description": "Plug into sunlight and enjoy a zero electricity bill with premium solar systems.",
+          "globalIndex": 63,
+          "type": "image"
+        },
+        {
+          "src": "https://youtube.com/shorts/ZPqqln6JGNA",
+          "title": "BITAPLUS Solar",
+          "description": "An informative overview of BITAPLUS Solar's solar energy solutions, rooftop panel installations, and clean energy benefits.",
+          "globalIndex": 206,
+          "type": "youtube"
+        },
+        {
+          "src": "/Campaign/SolarCampaign.jpeg",
+          "title": "Solar Energy Lead Campaign",
+          "description": "Performance marketing campaign designed for commercial and residential solar installation leads.",
+          "globalIndex": 306,
+          "type": "campaign"
+        }
+      ]
+    },
+    {
+      "industry": "Interior Design",
+      "description": "Interior design studios, home décor campaigns, and premium living space creatives.",
+      "images": [
+        {
+          "src": "/creative_content/Interiorcreative.jpeg",
+          "title": "Align Home Interior Nagpur",
+          "description": "Transform your dream home into reality with complete residential and commercial interior solutions.",
+          "globalIndex": 70,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/interior2creative.jpeg",
+          "title": "Honeywell Enterprises Interior",
+          "description": "Transforming spaces into experiences with modular furniture and turnkey solutions.",
+          "globalIndex": 71,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Interior3creative.jpeg",
+          "title": "Honeywell Space Transformation",
+          "description": "Expert space planning, interior design, and modular furniture with 25+ years experience.",
+          "globalIndex": 72,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Interior4creative.jpeg",
+          "title": "Arch Studio Interior Design",
+          "description": "Premium architecture and interior design services to craft spaces that reflect your lifestyle.",
+          "globalIndex": 73,
+          "type": "image"
+        },
+        {
+          "src": "https://youtube.com/shorts/jEOIOVnY_vI",
+          "title": "Aditya Modular Design Studio",
+          "description": "A stunning showcase of Aditya Modular Design Studio's premium modular furniture, custom interiors, and space transformation expertise.",
+          "globalIndex": 201,
+          "type": "youtube"
+        },
+        {
+          "src": "https://youtu.be/lzx89-Ds0UI?si=BYPUtEgbDHWWEiZk",
+          "title": "Livdecor Interior",
+          "description": "An immersive AI-assisted interior design promo video showcasing realistic modern space transformations.",
+          "globalIndex": 254,
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "industry": "Technology & Apps",
+      "description": "Technology companies, SaaS platforms, application launches, and digital services campaigns.",
+      "images": [
+        {
+          "src": "/creative_content/TechnologyCreative.jpeg",
+          "title": "LockYourIdea AI Video Solutions",
+          "description": "AI video creation and marketing dashboard to save your marketing budget.",
+          "globalIndex": 80,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/TechnologyCreative2.jpeg",
+          "title": "Electra Dealer Aata Chakki",
+          "description": "Premium domestic flour mill with a copper winding motor, low noise, and high performance.",
+          "globalIndex": 83,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Applicationcreative.jpeg",
+          "title": "Macto AI Dashboard",
+          "description": "Smarter business dashboard powered by AI to launch, manage, and grow effortlessly.",
+          "globalIndex": 81,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/Applicationcreative2.jpeg",
+          "title": "Adly App All-in-One Partner",
+          "description": "All-in-one business app with auto WhatsApp, bulk messaging, and dynamic websites.",
+          "globalIndex": 82,
+          "type": "image"
+        },
+        {
+          "src": "https://youtube.com/shorts/dv9gLumeu4c",
+          "title": "Adly – Brand Promotional Video",
+          "description": "A high-impact AI-assisted promotional video for Adly, showcasing brand identity, product highlights, and digital marketing reach.",
+          "globalIndex": 202,
+          "type": "youtube"
+        },
+        {
+          "src": "https://youtu.be/f77Cbh2ol9Q?si=ntu4dSlpoxU87ctt",
+          "title": "Garments Software",
+          "description": "An engaging AI-assisted promotional video for technology and digital solutions.",
+          "globalIndex": 257,
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "industry": "Tours & Travels",
+      "description": "Travel agencies, tourism campaigns, tour package creatives, and destination marketing.",
+      "images": [
+        {
+          "src": "/creative_content/Tour&Travels3.jpeg",
+          "title": "Mountain Bliss Resort Girivan",
+          "description": "Your perfect escape in the lap of nature with a peaceful stay at Girivan, Mulshi.",
+          "globalIndex": 90,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/ToursAndTravels.jpeg",
+          "title": "Swamini Tours Somnath Dwarka Girnar",
+          "description": "Organized spiritual tour package for Somnath, Dwarka, and Girnar.",
+          "globalIndex": 91,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/ToursAnd2TRavels.jpeg",
+          "title": "Swamini Tours Spiritual Journey",
+          "description": "An unforgettable spiritual journey with comfortable travel, meals, and beautiful stays.",
+          "globalIndex": 92,
+          "type": "image"
+        },
+        {
+          "src": "https://youtube.com/shorts/i62UuswIIBU",
+          "title": "SWAMINI TOURS.",
+          "description": "Swamini Tours travel and tour package promotional reel.",
+          "globalIndex": 221,
+          "type": "reel"
+        },
+        {
+          "src": "https://youtube.com/shorts/oicsQmkp5D4",
+          "title": "Tours & Travels Reel",
+          "description": "Promotional reel for tourism and travel packages.",
+          "globalIndex": 220,
+          "type": "reel"
+        }
+      ]
+    },
+    {
+      "industry": "Agriculture",
+      "description": "Agricultural products, cattle nutrition, organic manure, crop protection, and farming solution creatives.",
+      "images": [
+        {
+          "src": "/creative_content/AgricultureCreative.jpeg",
+          "title": "Suday Healthcare Cattle Nutrition",
+          "description": "Scientific cattle nutrition & milk production booster with Daymin Gold AD3 and Sudacal Gold AD3.",
+          "globalIndex": 110,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/AgricultureCreative1.jpeg",
+          "title": "Suday Healthcare Daymin Gold AD3",
+          "description": "Metho-Chelated mineral and vitamin powder supplement for cattle productivity, immunity, and health.",
+          "globalIndex": 111,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/AgricultureCreative2.jpeg",
+          "title": "Mack Agro Mack 007 Organic Manure",
+          "description": "Organic manure for greener fields, improved soil fertility, healthy roots, and higher crop yields.",
+          "globalIndex": 112,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/AgricultureCreative3.jpeg",
+          "title": "Mack Agro Farming Revolution",
+          "description": "High quality fish meal & oil cake organic fertilizer boosting soil fertility and accelerating crop growth.",
+          "globalIndex": 113,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/AgricultureCreative4.jpeg",
+          "title": "Agrifield Magic Flower Drop Control",
+          "description": "Advanced agricultural formula to prevent flower drop, enhance fruit setting, and boost crop productivity.",
+          "globalIndex": 114,
+          "type": "image"
+        },
+        {
+          "src": "/creative_content/AgricultureCreative5.jpeg",
+          "title": "Agrifield Magic Crop Protection",
+          "description": "Effective flower drop control and crop protection booster for maximum yield during flowering stage.",
+          "globalIndex": 115,
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "industry": "Sports",
+      "description": "Sports brands, fitness campaigns, athletic event creatives, and sports marketing.",
+      "images": [
+        {
+          "src": "/creative_content/Sportscreative1.jpeg",
+          "title": "Timeer's Badminton Academy",
+          "description": "Professional badminton coaching for all age groups with 20+ years of excellence.",
+          "globalIndex": 100,
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "industry": "Car Dealership",
+      "description": "Promotional videos, marketing campaigns, and creative content for car dealerships.",
+      "images": [
+        {
+          "src": "https://youtu.be/bvKjWoaAOQY?si=LnPMbHrhTanH2I_V",
+          "title": "Sharan360",
+          "description": "An engaging promotional video for Sharan360 car dealership, highlighting premium vehicles and automotive services.",
+          "globalIndex": 256,
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "industry": "Digital Marketing",
+      "description": "AI-powered social media marketing, Google Ads, and performance-driven digital campaigns by Ai Digital.",
+      "images": [
+        {
+          "src": "https://youtube.com/shorts/VNMd9kBvsmg",
+          "title": "Ai Digital – Social Media Marketing",
+          "description": "Discover how Ai Digital drives measurable growth through social media marketing, Google Ads, and AI-powered digital strategies.",
+          "globalIndex": 200,
+          "type": "youtube"
+        },
+        {
+          "src": "https://youtube.com/shorts/dv9gLumeu4c",
+          "title": "Adly – Brand Promotional Video",
+          "description": "A high-impact AI-assisted promotional video for Adly, showcasing brand identity, product highlights, and digital marketing reach.",
+          "globalIndex": 202,
+          "type": "youtube"
+        },
+        {
+          "src": "https://youtube.com/shorts/yrA8PZJ17k4",
+          "title": "Hayum – Brand Promotional Video",
+          "description": "An engaging AI-assisted promotional reel for Hayum, highlighting brand story, product offerings, and audience connect.",
+          "globalIndex": 203,
+          "type": "youtube"
+        },
+        {
+          "src": "https://youtube.com/shorts/kGqZ1WCFwXA",
+          "title": "Ai Digital – Affordable Video Services",
+          "description": "Get high-quality AI videos and social media creatives at affordable prices to boost your business reach.",
+          "globalIndex": 212,
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "industry": "Construction",
+      "description": "All-in-one Construction ERP & Project Management software showcase, web portal, and local SEO campaign.",
+      "images": [
+        {
+          "src": "https://www.hitoffice.co.in/",
+          "title": "Hitoffice Construction ERP",
+          "description": "Complete construction ERP and project management software website showcase. Feature-rich, optimized for lead generation and search engine visibility.",
+          "globalIndex": 101,
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "industry": "E-Commerce",
+      "description": "High-converting e-commerce platforms, wellness product showcases, and retail marketing campaigns.",
+      "images": [
+        {
+          "src": "/creative_content/Ecommerce-products.jpeg",
+          "title": "Pureplush Herbal Products",
+          "description": "E-commerce product showcase for pure and natural herbal skincare and hair care products.",
+          "globalIndex": 101,
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
