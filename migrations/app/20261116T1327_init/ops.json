@@ -1,0 +1,1853 @@
+[
+  {
+    "id": "schema.public",
+    "label": "Create schema \"public\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres"
+    },
+    "precheck": [],
+    "execute": [
+      {
+        "description": "Create schema \"public\"",
+        "sql": "CREATE SCHEMA IF NOT EXISTS \"public\"",
+        "params": []
+      }
+    ],
+    "postcheck": []
+  },
+  {
+    "id": "table.Attendance",
+    "label": "Create table \"Attendance\"",
+    "summary": "Creates table \"Attendance\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "Attendance"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"Attendance\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"Attendance\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"Attendance\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"Attendance\"",
+        "sql": "CREATE TABLE \"public\".\"Attendance\" (\n  \"clockIn\" timestamp(3) NOT NULL,\n  \"clockOut\" timestamp(3),\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"date\" text NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"location\" text,\n  \"status\" text NOT NULL,\n  \"userId\" int4 NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"Attendance\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"Attendance\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"Attendance\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.AuditLog",
+    "label": "Create table \"AuditLog\"",
+    "summary": "Creates table \"AuditLog\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "AuditLog"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"AuditLog\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"AuditLog\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"AuditLog\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"AuditLog\"",
+        "sql": "CREATE TABLE \"public\".\"AuditLog\" (\n  \"action\" text NOT NULL,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"performedByName\" text NOT NULL,\n  \"performedByRole\" text NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"AuditLog\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"AuditLog\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"AuditLog\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.Blog",
+    "label": "Create table \"Blog\"",
+    "summary": "Creates table \"Blog\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "Blog"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"Blog\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"Blog\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"Blog\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"Blog\"",
+        "sql": "CREATE TABLE \"public\".\"Blog\" (\n  \"category\" text DEFAULT 'Marketing' NOT NULL,\n  \"content\" text NOT NULL,\n  \"coverImage\" text,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"excerpt\" text,\n  \"id\" text NOT NULL,\n  \"published\" bool DEFAULT true NOT NULL,\n  \"publishedAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"slug\" text NOT NULL,\n  \"title\" text NOT NULL,\n  \"updatedAt\" timestamp(3) NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"Blog\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"Blog\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"Blog\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.CallRecord",
+    "label": "Create table \"CallRecord\"",
+    "summary": "Creates table \"CallRecord\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "CallRecord"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"CallRecord\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"CallRecord\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"CallRecord\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"CallRecord\"",
+        "sql": "CREATE TABLE \"public\".\"CallRecord\" (\n  \"callDate\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"clientName\" text NOT NULL,\n  \"expectedClosingDate\" timestamp(3),\n  \"expectedValue\" float8,\n  \"followUpDate\" timestamp(3),\n  \"id\" SERIAL NOT NULL,\n  \"leadSource\" text,\n  \"notes\" text,\n  \"packageName\" text,\n  \"phoneNumber\" text NOT NULL,\n  \"salesPersonId\" int4 NOT NULL,\n  \"status\" text DEFAULT 'PENDING' NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"CallRecord\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"CallRecord\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"CallRecord\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.CheckoutExitFeedback",
+    "label": "Create table \"CheckoutExitFeedback\"",
+    "summary": "Creates table \"CheckoutExitFeedback\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "CheckoutExitFeedback"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"CheckoutExitFeedback\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"CheckoutExitFeedback\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"CheckoutExitFeedback\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"CheckoutExitFeedback\"",
+        "sql": "CREATE TABLE \"public\".\"CheckoutExitFeedback\" (\n  \"comment\" text,\n  \"created_at\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"reason\" text NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"CheckoutExitFeedback\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"CheckoutExitFeedback\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"CheckoutExitFeedback\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.Client",
+    "label": "Create table \"Client\"",
+    "summary": "Creates table \"Client\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "Client"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"Client\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"Client\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"Client\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"Client\"",
+        "sql": "CREATE TABLE \"public\".\"Client\" (\n  \"accountReady\" bool DEFAULT false NOT NULL,\n  \"active\" bool DEFAULT true NOT NULL,\n  \"businessName\" text NOT NULL,\n  \"clientId\" text NOT NULL,\n  \"clientName\" text,\n  \"contact\" text,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"email\" text,\n  \"extensionDays\" int4 DEFAULT 0 NOT NULL,\n  \"extensionExpiryDate\" text,\n  \"id\" SERIAL NOT NULL,\n  \"joiningDate\" text NOT NULL,\n  \"notes\" text,\n  \"packageAmount\" float8 NOT NULL,\n  \"packageName\" text NOT NULL,\n  \"password\" text,\n  \"requirement\" text,\n  \"sector\" text,\n  \"services\" text NOT NULL,\n  \"website\" text,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"Client\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"Client\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"Client\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.ClientDelivery",
+    "label": "Create table \"ClientDelivery\"",
+    "summary": "Creates table \"ClientDelivery\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "ClientDelivery"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"ClientDelivery\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"ClientDelivery\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"ClientDelivery\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"ClientDelivery\"",
+        "sql": "CREATE TABLE \"public\".\"ClientDelivery\" (\n  \"clientId\" text NOT NULL,\n  \"clientName\" text NOT NULL,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"deliveryId\" text NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"linkedTaskId\" text,\n  \"notes\" text,\n  \"postDate\" text NOT NULL,\n  \"postType\" text NOT NULL,\n  \"status\" text DEFAULT 'Pending' NOT NULL,\n  \"workingOn\" text,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"ClientDelivery\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"ClientDelivery\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"ClientDelivery\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.ClientFeedback",
+    "label": "Create table \"ClientFeedback\"",
+    "summary": "Creates table \"ClientFeedback\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "ClientFeedback"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"ClientFeedback\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"ClientFeedback\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"ClientFeedback\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"ClientFeedback\"",
+        "sql": "CREATE TABLE \"public\".\"ClientFeedback\" (\n  \"businessName\" text NOT NULL,\n  \"clientId\" text NOT NULL,\n  \"clientName\" text,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"message\" text NOT NULL,\n  \"rating\" int4,\n  \"status\" text DEFAULT 'Pending' NOT NULL,\n  \"type\" text NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"ClientFeedback\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"ClientFeedback\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"ClientFeedback\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.ClientTask",
+    "label": "Create table \"ClientTask\"",
+    "summary": "Creates table \"ClientTask\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "ClientTask"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"ClientTask\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"ClientTask\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"ClientTask\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"ClientTask\"",
+        "sql": "CREATE TABLE \"public\".\"ClientTask\" (\n  \"assignTo\" text,\n  \"businessName\" text NOT NULL,\n  \"clientId\" text NOT NULL,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"date\" text NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"notes\" text,\n  \"packageName\" text,\n  \"postType\" text,\n  \"priority\" text DEFAULT 'Normal' NOT NULL,\n  \"reason\" text,\n  \"service\" text,\n  \"status\" text DEFAULT 'Not Started' NOT NULL,\n  \"statusChangedAt\" timestamp(3),\n  \"taskId\" text NOT NULL,\n  \"taskTitle\" text NOT NULL,\n  \"workSampleUrl\" text,\n  \"workingOn\" text,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"ClientTask\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"ClientTask\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"ClientTask\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.JobApplication",
+    "label": "Create table \"JobApplication\"",
+    "summary": "Creates table \"JobApplication\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "JobApplication"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"JobApplication\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"JobApplication\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"JobApplication\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"JobApplication\"",
+        "sql": "CREATE TABLE \"public\".\"JobApplication\" (\n  \"address\" text,\n  \"city\" text,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"district\" text,\n  \"email\" text NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"job_title\" text NOT NULL,\n  \"message\" text,\n  \"name\" text NOT NULL,\n  \"phone\" text NOT NULL,\n  \"resume_url\" text,\n  \"status\" text DEFAULT 'Pending' NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"JobApplication\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"JobApplication\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"JobApplication\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.LeaveRequest",
+    "label": "Create table \"LeaveRequest\"",
+    "summary": "Creates table \"LeaveRequest\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "LeaveRequest"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"LeaveRequest\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"LeaveRequest\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"LeaveRequest\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"LeaveRequest\"",
+        "sql": "CREATE TABLE \"public\".\"LeaveRequest\" (\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"endDate\" text NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"reason\" text NOT NULL,\n  \"startDate\" text NOT NULL,\n  \"status\" text DEFAULT 'PENDING' NOT NULL,\n  \"userId\" int4 NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"LeaveRequest\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"LeaveRequest\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"LeaveRequest\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.OnboardingDetail",
+    "label": "Create table \"OnboardingDetail\"",
+    "summary": "Creates table \"OnboardingDetail\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "OnboardingDetail"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"OnboardingDetail\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"OnboardingDetail\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"OnboardingDetail\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"OnboardingDetail\"",
+        "sql": "CREATE TABLE \"public\".\"OnboardingDetail\" (\n  \"business_name\" text NOT NULL,\n  \"client_name\" text NOT NULL,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"email\" text NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"notes\" text,\n  \"phone\" text NOT NULL,\n  \"services\" text,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"OnboardingDetail\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"OnboardingDetail\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"OnboardingDetail\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.Plan",
+    "label": "Create table \"Plan\"",
+    "summary": "Creates table \"Plan\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "Plan"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"Plan\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"Plan\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"Plan\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"Plan\"",
+        "sql": "CREATE TABLE \"public\".\"Plan\" (\n  \"billingCycle\" text,\n  \"category\" text NOT NULL,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"features\" jsonb NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"name\" text NOT NULL,\n  \"price\" float8 NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"Plan\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"Plan\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"Plan\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.PortfolioItem",
+    "label": "Create table \"PortfolioItem\"",
+    "summary": "Creates table \"PortfolioItem\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "PortfolioItem"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"PortfolioItem\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"PortfolioItem\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"PortfolioItem\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"PortfolioItem\"",
+        "sql": "CREATE TABLE \"public\".\"PortfolioItem\" (\n  \"accent\" text,\n  \"category\" text,\n  \"description\" text,\n  \"global_index\" int4,\n  \"icon\" text,\n  \"id\" text NOT NULL,\n  \"industry\" text,\n  \"metric\" text,\n  \"metric_label\" text,\n  \"section\" text NOT NULL,\n  \"src\" text,\n  \"tags\" text,\n  \"thumbnail\" text,\n  \"title\" text NOT NULL,\n  \"type\" text,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"PortfolioItem\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"PortfolioItem\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"PortfolioItem\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.PricingPlan",
+    "label": "Create table \"PricingPlan\"",
+    "summary": "Creates table \"PricingPlan\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "PricingPlan"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"PricingPlan\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"PricingPlan\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"PricingPlan\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"PricingPlan\"",
+        "sql": "CREATE TABLE \"public\".\"PricingPlan\" (\n  \"badge_class\" text,\n  \"button_text\" text DEFAULT 'Select Plan',\n  \"category\" text NOT NULL,\n  \"features\" text NOT NULL,\n  \"highlight_styles\" text,\n  \"id\" text NOT NULL,\n  \"is_highlight\" bool DEFAULT false NOT NULL,\n  \"is_popular\" bool DEFAULT false NOT NULL,\n  \"level\" text NOT NULL,\n  \"period\" text,\n  \"pill_class\" text,\n  \"plan_parameter\" text,\n  \"platform\" text,\n  \"price\" text NOT NULL,\n  \"service_name\" text,\n  \"tag_class\" text,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"PricingPlan\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"PricingPlan\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"PricingPlan\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.PromoCode",
+    "label": "Create table \"PromoCode\"",
+    "summary": "Creates table \"PromoCode\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "PromoCode"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"PromoCode\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"PromoCode\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"PromoCode\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"PromoCode\"",
+        "sql": "CREATE TABLE \"public\".\"PromoCode\" (\n  \"code\" text NOT NULL,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"description\" text,\n  \"discount_percent\" float8 NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"is_active\" bool DEFAULT true NOT NULL,\n  \"min_order_amount\" float8 DEFAULT 0 NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"PromoCode\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"PromoCode\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"PromoCode\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.RenewalRequest",
+    "label": "Create table \"RenewalRequest\"",
+    "summary": "Creates table \"RenewalRequest\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "RenewalRequest"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"RenewalRequest\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"RenewalRequest\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"RenewalRequest\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"RenewalRequest\"",
+        "sql": "CREATE TABLE \"public\".\"RenewalRequest\" (\n  \"adminNote\" text,\n  \"approvedById\" int4,\n  \"approvedByName\" text,\n  \"approvedDays\" int4,\n  \"businessName\" text NOT NULL,\n  \"clientDbId\" int4 NOT NULL,\n  \"clientId\" text NOT NULL,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"id\" SERIAL NOT NULL,\n  \"reason\" text,\n  \"requestType\" text NOT NULL,\n  \"requestedById\" int4 NOT NULL,\n  \"requestedByName\" text NOT NULL,\n  \"requestedByRole\" text DEFAULT 'TL' NOT NULL,\n  \"requestedDays\" int4,\n  \"status\" text DEFAULT 'PENDING' NOT NULL,\n  \"updatedAt\" timestamp(3) NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"RenewalRequest\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"RenewalRequest\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"RenewalRequest\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.SiteVisibility",
+    "label": "Create table \"SiteVisibility\"",
+    "summary": "Creates table \"SiteVisibility\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "SiteVisibility"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"SiteVisibility\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"SiteVisibility\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"SiteVisibility\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"SiteVisibility\"",
+        "sql": "CREATE TABLE \"public\".\"SiteVisibility\" (\n  \"description\" text,\n  \"id\" text NOT NULL,\n  \"is_visible\" bool DEFAULT true NOT NULL,\n  \"name\" text NOT NULL,\n  \"page_group\" text NOT NULL,\n  \"sort_order\" int4 DEFAULT 0 NOT NULL,\n  \"type\" text DEFAULT 'section' NOT NULL,\n  \"updatedAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"SiteVisibility\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"SiteVisibility\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"SiteVisibility\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.Task",
+    "label": "Create table \"Task\"",
+    "summary": "Creates table \"Task\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "Task"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"Task\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"Task\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"Task\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"Task\"",
+        "sql": "CREATE TABLE \"public\".\"Task\" (\n  \"assignedToId\" int4 NOT NULL,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"createdById\" int4 NOT NULL,\n  \"department\" text,\n  \"dependency\" text,\n  \"description\" text,\n  \"dueDate\" text,\n  \"expectedOutput\" text,\n  \"id\" SERIAL NOT NULL,\n  \"module\" text,\n  \"priority\" text DEFAULT 'Normal' NOT NULL,\n  \"reason\" text,\n  \"status\" text DEFAULT 'TODO' NOT NULL,\n  \"subtasks\" text,\n  \"taskDate\" text,\n  \"title\" text NOT NULL,\n  \"workSampleUrl\" text,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"Task\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"Task\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"Task\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.User",
+    "label": "Create table \"User\"",
+    "summary": "Creates table \"User\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "User"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"User\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"User\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"User\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"User\"",
+        "sql": "CREATE TABLE \"public\".\"User\" (\n  \"aadharCard\" text,\n  \"address\" text,\n  \"avatar\" text,\n  \"createdAt\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"dateOfJoining\" text,\n  \"department\" text NOT NULL,\n  \"designation\" text,\n  \"dob\" text,\n  \"email\" text NOT NULL,\n  \"exp\" text,\n  \"graduation\" text,\n  \"id\" SERIAL NOT NULL,\n  \"lastSalary\" float8 DEFAULT 0,\n  \"marksheet10\" text,\n  \"marksheet12\" text,\n  \"mobile\" text,\n  \"name\" text NOT NULL,\n  \"otherDoc\" text,\n  \"panCard\" text,\n  \"passportPhoto\" text,\n  \"password\" text NOT NULL,\n  \"role\" text NOT NULL,\n  \"salary\" float8 DEFAULT 0 NOT NULL,\n  \"status\" text DEFAULT 'ACTIVE' NOT NULL,\n  \"works\" text,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"User\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"User\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"User\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.WebsiteVisitor",
+    "label": "Create table \"WebsiteVisitor\"",
+    "summary": "Creates table \"WebsiteVisitor\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "WebsiteVisitor"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"WebsiteVisitor\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"WebsiteVisitor\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"WebsiteVisitor\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"WebsiteVisitor\"",
+        "sql": "CREATE TABLE \"public\".\"WebsiteVisitor\" (\n  \"country\" text,\n  \"created_at\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"duration\" int4 DEFAULT 0,\n  \"id\" SERIAL NOT NULL,\n  \"ip_address\" text,\n  \"last_active_at\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"page_visited\" text,\n  \"referrer\" text,\n  \"session_id\" text,\n  \"user_agent\" text,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"WebsiteVisitor\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"WebsiteVisitor\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"WebsiteVisitor\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "table.WhatsAppLog",
+    "label": "Create table \"WhatsAppLog\"",
+    "summary": "Creates table \"WhatsAppLog\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "WhatsAppLog"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"WhatsAppLog\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"WhatsAppLog\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"WhatsAppLog\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"WhatsAppLog\"",
+        "sql": "CREATE TABLE \"public\".\"WhatsAppLog\" (\n  \"created_at\" timestamp(3) DEFAULT (now()) NOT NULL,\n  \"error\" text,\n  \"id\" SERIAL NOT NULL,\n  \"message\" text NOT NULL,\n  \"recipient\" text NOT NULL,\n  \"status\" text DEFAULT 'SENT' NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"WhatsAppLog\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"WhatsAppLog\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"WhatsAppLog\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "index.Blog.Blog_slug_key",
+    "label": "Create index \"Blog_slug_key\" on \"Blog\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "Blog_slug_key",
+        "table": "Blog"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"Blog_slug_key\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"Blog_slug_key\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "index \"Blog_slug_key\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"Blog_slug_key\"",
+        "sql": "CREATE UNIQUE INDEX \"Blog_slug_key\" ON \"public\".\"Blog\" (\"slug\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"Blog_slug_key\" exists on \"Blog\" with the planned definition",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" INNER JOIN \"pg_index\" AS \"i\" ON \"i\".\"indexrelid\" = \"c\".\"oid\" INNER JOIN \"pg_am\" AS \"m\" ON \"m\".\"oid\" = \"c\".\"relam\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3) AND \"i\".\"indrelid\" = to_regclass($4) AND \"i\".\"indisunique\" AND \"m\".\"amname\" = $5 AND (\"i\".\"indexprs\" IS NULL AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"i\".\"indkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"i\".\"indrelid\" AND key_attribute.attnum = key_column.attnum) = ($6)::jsonb) AND \"i\".\"indpred\" IS NULL)) AS \"result\"",
+        "params": [
+          "\"public\".\"Blog_slug_key\"",
+          "i",
+          "I",
+          "\"public\".\"Blog\"",
+          "btree",
+          "[\"slug\"]"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "index.Client.Client_clientId_key",
+    "label": "Create index \"Client_clientId_key\" on \"Client\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "Client_clientId_key",
+        "table": "Client"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"Client_clientId_key\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"Client_clientId_key\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "index \"Client_clientId_key\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"Client_clientId_key\"",
+        "sql": "CREATE UNIQUE INDEX \"Client_clientId_key\" ON \"public\".\"Client\" (\"clientId\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"Client_clientId_key\" exists on \"Client\" with the planned definition",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" INNER JOIN \"pg_index\" AS \"i\" ON \"i\".\"indexrelid\" = \"c\".\"oid\" INNER JOIN \"pg_am\" AS \"m\" ON \"m\".\"oid\" = \"c\".\"relam\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3) AND \"i\".\"indrelid\" = to_regclass($4) AND \"i\".\"indisunique\" AND \"m\".\"amname\" = $5 AND (\"i\".\"indexprs\" IS NULL AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"i\".\"indkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"i\".\"indrelid\" AND key_attribute.attnum = key_column.attnum) = ($6)::jsonb) AND \"i\".\"indpred\" IS NULL)) AS \"result\"",
+        "params": [
+          "\"public\".\"Client_clientId_key\"",
+          "i",
+          "I",
+          "\"public\".\"Client\"",
+          "btree",
+          "[\"clientId\"]"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "index.ClientDelivery.ClientDelivery_deliveryId_key",
+    "label": "Create index \"ClientDelivery_deliveryId_key\" on \"ClientDelivery\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "ClientDelivery_deliveryId_key",
+        "table": "ClientDelivery"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"ClientDelivery_deliveryId_key\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"ClientDelivery_deliveryId_key\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "index \"ClientDelivery_deliveryId_key\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"ClientDelivery_deliveryId_key\"",
+        "sql": "CREATE UNIQUE INDEX \"ClientDelivery_deliveryId_key\" ON \"public\".\"ClientDelivery\" (\"deliveryId\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"ClientDelivery_deliveryId_key\" exists on \"ClientDelivery\" with the planned definition",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" INNER JOIN \"pg_index\" AS \"i\" ON \"i\".\"indexrelid\" = \"c\".\"oid\" INNER JOIN \"pg_am\" AS \"m\" ON \"m\".\"oid\" = \"c\".\"relam\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3) AND \"i\".\"indrelid\" = to_regclass($4) AND \"i\".\"indisunique\" AND \"m\".\"amname\" = $5 AND (\"i\".\"indexprs\" IS NULL AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"i\".\"indkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"i\".\"indrelid\" AND key_attribute.attnum = key_column.attnum) = ($6)::jsonb) AND \"i\".\"indpred\" IS NULL)) AS \"result\"",
+        "params": [
+          "\"public\".\"ClientDelivery_deliveryId_key\"",
+          "i",
+          "I",
+          "\"public\".\"ClientDelivery\"",
+          "btree",
+          "[\"deliveryId\"]"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "index.ClientTask.ClientTask_taskId_key",
+    "label": "Create index \"ClientTask_taskId_key\" on \"ClientTask\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "ClientTask_taskId_key",
+        "table": "ClientTask"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"ClientTask_taskId_key\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"ClientTask_taskId_key\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "index \"ClientTask_taskId_key\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"ClientTask_taskId_key\"",
+        "sql": "CREATE UNIQUE INDEX \"ClientTask_taskId_key\" ON \"public\".\"ClientTask\" (\"taskId\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"ClientTask_taskId_key\" exists on \"ClientTask\" with the planned definition",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" INNER JOIN \"pg_index\" AS \"i\" ON \"i\".\"indexrelid\" = \"c\".\"oid\" INNER JOIN \"pg_am\" AS \"m\" ON \"m\".\"oid\" = \"c\".\"relam\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3) AND \"i\".\"indrelid\" = to_regclass($4) AND \"i\".\"indisunique\" AND \"m\".\"amname\" = $5 AND (\"i\".\"indexprs\" IS NULL AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"i\".\"indkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"i\".\"indrelid\" AND key_attribute.attnum = key_column.attnum) = ($6)::jsonb) AND \"i\".\"indpred\" IS NULL)) AS \"result\"",
+        "params": [
+          "\"public\".\"ClientTask_taskId_key\"",
+          "i",
+          "I",
+          "\"public\".\"ClientTask\"",
+          "btree",
+          "[\"taskId\"]"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "index.PromoCode.PromoCode_code_key",
+    "label": "Create index \"PromoCode_code_key\" on \"PromoCode\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "PromoCode_code_key",
+        "table": "PromoCode"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"PromoCode_code_key\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"PromoCode_code_key\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "index \"PromoCode_code_key\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"PromoCode_code_key\"",
+        "sql": "CREATE UNIQUE INDEX \"PromoCode_code_key\" ON \"public\".\"PromoCode\" (\"code\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"PromoCode_code_key\" exists on \"PromoCode\" with the planned definition",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" INNER JOIN \"pg_index\" AS \"i\" ON \"i\".\"indexrelid\" = \"c\".\"oid\" INNER JOIN \"pg_am\" AS \"m\" ON \"m\".\"oid\" = \"c\".\"relam\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3) AND \"i\".\"indrelid\" = to_regclass($4) AND \"i\".\"indisunique\" AND \"m\".\"amname\" = $5 AND (\"i\".\"indexprs\" IS NULL AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"i\".\"indkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"i\".\"indrelid\" AND key_attribute.attnum = key_column.attnum) = ($6)::jsonb) AND \"i\".\"indpred\" IS NULL)) AS \"result\"",
+        "params": [
+          "\"public\".\"PromoCode_code_key\"",
+          "i",
+          "I",
+          "\"public\".\"PromoCode\"",
+          "btree",
+          "[\"code\"]"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "index.User.User_email_key",
+    "label": "Create index \"User_email_key\" on \"User\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "User_email_key",
+        "table": "User"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"User_email_key\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"User_email_key\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "index \"User_email_key\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"User_email_key\"",
+        "sql": "CREATE UNIQUE INDEX \"User_email_key\" ON \"public\".\"User\" (\"email\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"User_email_key\" exists on \"User\" with the planned definition",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" INNER JOIN \"pg_index\" AS \"i\" ON \"i\".\"indexrelid\" = \"c\".\"oid\" INNER JOIN \"pg_am\" AS \"m\" ON \"m\".\"oid\" = \"c\".\"relam\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3) AND \"i\".\"indrelid\" = to_regclass($4) AND \"i\".\"indisunique\" AND \"m\".\"amname\" = $5 AND (\"i\".\"indexprs\" IS NULL AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"i\".\"indkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"i\".\"indrelid\" AND key_attribute.attnum = key_column.attnum) = ($6)::jsonb) AND \"i\".\"indpred\" IS NULL)) AS \"result\"",
+        "params": [
+          "\"public\".\"User_email_key\"",
+          "i",
+          "I",
+          "\"public\".\"User\"",
+          "btree",
+          "[\"email\"]"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.Attendance.Attendance_userId_fkey",
+    "label": "Add foreign key \"Attendance_userId_fkey\" on \"Attendance\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "Attendance_userId_fkey",
+        "table": "Attendance"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"Attendance_userId_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "Attendance_userId_fkey",
+          "public",
+          "\"public\".\"Attendance\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "FK \"Attendance_userId_fkey\" on \"Attendance\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"Attendance_userId_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"Attendance\"\nADD CONSTRAINT \"Attendance_userId_fkey\"\nFOREIGN KEY (\"userId\")\nREFERENCES \"public\".\"User\" (\"id\")\nON DELETE CASCADE\nON UPDATE CASCADE"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"Attendance_userId_fkey\" exists with the planned columns, referenced table and actions",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3) AND \"c\".\"contype\" = $4 AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"conkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"conrelid\" AND key_attribute.attnum = key_column.attnum) = ($5)::jsonb AND \"c\".\"confrelid\" = to_regclass($6) AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"confkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"confrelid\" AND key_attribute.attnum = key_column.attnum) = ($7)::jsonb AND \"c\".\"confdeltype\" = $8 AND \"c\".\"confupdtype\" = $9)) AS \"result\"",
+        "params": [
+          "Attendance_userId_fkey",
+          "public",
+          "\"public\".\"Attendance\"",
+          "f",
+          "[\"userId\"]",
+          "\"public\".\"User\"",
+          "[\"id\"]",
+          "c",
+          "c"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.CallRecord.CallRecord_salesPersonId_fkey",
+    "label": "Add foreign key \"CallRecord_salesPersonId_fkey\" on \"CallRecord\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "CallRecord_salesPersonId_fkey",
+        "table": "CallRecord"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"CallRecord_salesPersonId_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "CallRecord_salesPersonId_fkey",
+          "public",
+          "\"public\".\"CallRecord\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "FK \"CallRecord_salesPersonId_fkey\" on \"CallRecord\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"CallRecord_salesPersonId_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"CallRecord\"\nADD CONSTRAINT \"CallRecord_salesPersonId_fkey\"\nFOREIGN KEY (\"salesPersonId\")\nREFERENCES \"public\".\"User\" (\"id\")\nON DELETE CASCADE\nON UPDATE CASCADE"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"CallRecord_salesPersonId_fkey\" exists with the planned columns, referenced table and actions",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3) AND \"c\".\"contype\" = $4 AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"conkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"conrelid\" AND key_attribute.attnum = key_column.attnum) = ($5)::jsonb AND \"c\".\"confrelid\" = to_regclass($6) AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"confkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"confrelid\" AND key_attribute.attnum = key_column.attnum) = ($7)::jsonb AND \"c\".\"confdeltype\" = $8 AND \"c\".\"confupdtype\" = $9)) AS \"result\"",
+        "params": [
+          "CallRecord_salesPersonId_fkey",
+          "public",
+          "\"public\".\"CallRecord\"",
+          "f",
+          "[\"salesPersonId\"]",
+          "\"public\".\"User\"",
+          "[\"id\"]",
+          "c",
+          "c"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.ClientDelivery.ClientDelivery_clientId_fkey",
+    "label": "Add foreign key \"ClientDelivery_clientId_fkey\" on \"ClientDelivery\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "ClientDelivery_clientId_fkey",
+        "table": "ClientDelivery"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"ClientDelivery_clientId_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "ClientDelivery_clientId_fkey",
+          "public",
+          "\"public\".\"ClientDelivery\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "FK \"ClientDelivery_clientId_fkey\" on \"ClientDelivery\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"ClientDelivery_clientId_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"ClientDelivery\"\nADD CONSTRAINT \"ClientDelivery_clientId_fkey\"\nFOREIGN KEY (\"clientId\")\nREFERENCES \"public\".\"Client\" (\"clientId\")\nON DELETE CASCADE\nON UPDATE CASCADE"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"ClientDelivery_clientId_fkey\" exists with the planned columns, referenced table and actions",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3) AND \"c\".\"contype\" = $4 AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"conkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"conrelid\" AND key_attribute.attnum = key_column.attnum) = ($5)::jsonb AND \"c\".\"confrelid\" = to_regclass($6) AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"confkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"confrelid\" AND key_attribute.attnum = key_column.attnum) = ($7)::jsonb AND \"c\".\"confdeltype\" = $8 AND \"c\".\"confupdtype\" = $9)) AS \"result\"",
+        "params": [
+          "ClientDelivery_clientId_fkey",
+          "public",
+          "\"public\".\"ClientDelivery\"",
+          "f",
+          "[\"clientId\"]",
+          "\"public\".\"Client\"",
+          "[\"clientId\"]",
+          "c",
+          "c"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.ClientFeedback.ClientFeedback_clientId_fkey",
+    "label": "Add foreign key \"ClientFeedback_clientId_fkey\" on \"ClientFeedback\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "ClientFeedback_clientId_fkey",
+        "table": "ClientFeedback"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"ClientFeedback_clientId_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "ClientFeedback_clientId_fkey",
+          "public",
+          "\"public\".\"ClientFeedback\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "FK \"ClientFeedback_clientId_fkey\" on \"ClientFeedback\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"ClientFeedback_clientId_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"ClientFeedback\"\nADD CONSTRAINT \"ClientFeedback_clientId_fkey\"\nFOREIGN KEY (\"clientId\")\nREFERENCES \"public\".\"Client\" (\"clientId\")\nON DELETE CASCADE\nON UPDATE CASCADE"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"ClientFeedback_clientId_fkey\" exists with the planned columns, referenced table and actions",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3) AND \"c\".\"contype\" = $4 AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"conkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"conrelid\" AND key_attribute.attnum = key_column.attnum) = ($5)::jsonb AND \"c\".\"confrelid\" = to_regclass($6) AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"confkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"confrelid\" AND key_attribute.attnum = key_column.attnum) = ($7)::jsonb AND \"c\".\"confdeltype\" = $8 AND \"c\".\"confupdtype\" = $9)) AS \"result\"",
+        "params": [
+          "ClientFeedback_clientId_fkey",
+          "public",
+          "\"public\".\"ClientFeedback\"",
+          "f",
+          "[\"clientId\"]",
+          "\"public\".\"Client\"",
+          "[\"clientId\"]",
+          "c",
+          "c"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.ClientTask.ClientTask_clientId_fkey",
+    "label": "Add foreign key \"ClientTask_clientId_fkey\" on \"ClientTask\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "ClientTask_clientId_fkey",
+        "table": "ClientTask"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"ClientTask_clientId_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "ClientTask_clientId_fkey",
+          "public",
+          "\"public\".\"ClientTask\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "FK \"ClientTask_clientId_fkey\" on \"ClientTask\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"ClientTask_clientId_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"ClientTask\"\nADD CONSTRAINT \"ClientTask_clientId_fkey\"\nFOREIGN KEY (\"clientId\")\nREFERENCES \"public\".\"Client\" (\"clientId\")\nON DELETE CASCADE\nON UPDATE CASCADE"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"ClientTask_clientId_fkey\" exists with the planned columns, referenced table and actions",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3) AND \"c\".\"contype\" = $4 AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"conkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"conrelid\" AND key_attribute.attnum = key_column.attnum) = ($5)::jsonb AND \"c\".\"confrelid\" = to_regclass($6) AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"confkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"confrelid\" AND key_attribute.attnum = key_column.attnum) = ($7)::jsonb AND \"c\".\"confdeltype\" = $8 AND \"c\".\"confupdtype\" = $9)) AS \"result\"",
+        "params": [
+          "ClientTask_clientId_fkey",
+          "public",
+          "\"public\".\"ClientTask\"",
+          "f",
+          "[\"clientId\"]",
+          "\"public\".\"Client\"",
+          "[\"clientId\"]",
+          "c",
+          "c"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.LeaveRequest.LeaveRequest_userId_fkey",
+    "label": "Add foreign key \"LeaveRequest_userId_fkey\" on \"LeaveRequest\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "LeaveRequest_userId_fkey",
+        "table": "LeaveRequest"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"LeaveRequest_userId_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "LeaveRequest_userId_fkey",
+          "public",
+          "\"public\".\"LeaveRequest\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "FK \"LeaveRequest_userId_fkey\" on \"LeaveRequest\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"LeaveRequest_userId_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"LeaveRequest\"\nADD CONSTRAINT \"LeaveRequest_userId_fkey\"\nFOREIGN KEY (\"userId\")\nREFERENCES \"public\".\"User\" (\"id\")\nON DELETE CASCADE\nON UPDATE CASCADE"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"LeaveRequest_userId_fkey\" exists with the planned columns, referenced table and actions",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3) AND \"c\".\"contype\" = $4 AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"conkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"conrelid\" AND key_attribute.attnum = key_column.attnum) = ($5)::jsonb AND \"c\".\"confrelid\" = to_regclass($6) AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"confkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"confrelid\" AND key_attribute.attnum = key_column.attnum) = ($7)::jsonb AND \"c\".\"confdeltype\" = $8 AND \"c\".\"confupdtype\" = $9)) AS \"result\"",
+        "params": [
+          "LeaveRequest_userId_fkey",
+          "public",
+          "\"public\".\"LeaveRequest\"",
+          "f",
+          "[\"userId\"]",
+          "\"public\".\"User\"",
+          "[\"id\"]",
+          "c",
+          "c"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.RenewalRequest.RenewalRequest_clientDbId_fkey",
+    "label": "Add foreign key \"RenewalRequest_clientDbId_fkey\" on \"RenewalRequest\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "RenewalRequest_clientDbId_fkey",
+        "table": "RenewalRequest"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"RenewalRequest_clientDbId_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "RenewalRequest_clientDbId_fkey",
+          "public",
+          "\"public\".\"RenewalRequest\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "FK \"RenewalRequest_clientDbId_fkey\" on \"RenewalRequest\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"RenewalRequest_clientDbId_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"RenewalRequest\"\nADD CONSTRAINT \"RenewalRequest_clientDbId_fkey\"\nFOREIGN KEY (\"clientDbId\")\nREFERENCES \"public\".\"Client\" (\"id\")\nON DELETE CASCADE\nON UPDATE CASCADE"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"RenewalRequest_clientDbId_fkey\" exists with the planned columns, referenced table and actions",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3) AND \"c\".\"contype\" = $4 AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"conkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"conrelid\" AND key_attribute.attnum = key_column.attnum) = ($5)::jsonb AND \"c\".\"confrelid\" = to_regclass($6) AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"confkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"confrelid\" AND key_attribute.attnum = key_column.attnum) = ($7)::jsonb AND \"c\".\"confdeltype\" = $8 AND \"c\".\"confupdtype\" = $9)) AS \"result\"",
+        "params": [
+          "RenewalRequest_clientDbId_fkey",
+          "public",
+          "\"public\".\"RenewalRequest\"",
+          "f",
+          "[\"clientDbId\"]",
+          "\"public\".\"Client\"",
+          "[\"id\"]",
+          "c",
+          "c"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.Task.Task_assignedToId_fkey",
+    "label": "Add foreign key \"Task_assignedToId_fkey\" on \"Task\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "Task_assignedToId_fkey",
+        "table": "Task"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"Task_assignedToId_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "Task_assignedToId_fkey",
+          "public",
+          "\"public\".\"Task\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "FK \"Task_assignedToId_fkey\" on \"Task\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"Task_assignedToId_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"Task\"\nADD CONSTRAINT \"Task_assignedToId_fkey\"\nFOREIGN KEY (\"assignedToId\")\nREFERENCES \"public\".\"User\" (\"id\")\nON DELETE CASCADE\nON UPDATE CASCADE"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"Task_assignedToId_fkey\" exists with the planned columns, referenced table and actions",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3) AND \"c\".\"contype\" = $4 AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"conkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"conrelid\" AND key_attribute.attnum = key_column.attnum) = ($5)::jsonb AND \"c\".\"confrelid\" = to_regclass($6) AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"confkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"confrelid\" AND key_attribute.attnum = key_column.attnum) = ($7)::jsonb AND \"c\".\"confdeltype\" = $8 AND \"c\".\"confupdtype\" = $9)) AS \"result\"",
+        "params": [
+          "Task_assignedToId_fkey",
+          "public",
+          "\"public\".\"Task\"",
+          "f",
+          "[\"assignedToId\"]",
+          "\"public\".\"User\"",
+          "[\"id\"]",
+          "c",
+          "c"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.Task.Task_createdById_fkey",
+    "label": "Add foreign key \"Task_createdById_fkey\" on \"Task\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "Task_createdById_fkey",
+        "table": "Task"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"Task_createdById_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "Task_createdById_fkey",
+          "public",
+          "\"public\".\"Task\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "FK \"Task_createdById_fkey\" on \"Task\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"Task_createdById_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"Task\"\nADD CONSTRAINT \"Task_createdById_fkey\"\nFOREIGN KEY (\"createdById\")\nREFERENCES \"public\".\"User\" (\"id\")\nON DELETE CASCADE\nON UPDATE CASCADE"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"Task_createdById_fkey\" exists with the planned columns, referenced table and actions",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3) AND \"c\".\"contype\" = $4 AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"conkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"conrelid\" AND key_attribute.attnum = key_column.attnum) = ($5)::jsonb AND \"c\".\"confrelid\" = to_regclass($6) AND (SELECT coalesce(jsonb_agg(key_attribute.attname ORDER BY key_column.position), '[]'::jsonb) FROM unnest(\"c\".\"confkey\"::int2[]) WITH ORDINALITY AS key_column(attnum, position) JOIN pg_attribute key_attribute ON key_attribute.attrelid = \"c\".\"confrelid\" AND key_attribute.attnum = key_column.attnum) = ($7)::jsonb AND \"c\".\"confdeltype\" = $8 AND \"c\".\"confupdtype\" = $9)) AS \"result\"",
+        "params": [
+          "Task_createdById_fkey",
+          "public",
+          "\"public\".\"Task\"",
+          "f",
+          "[\"createdById\"]",
+          "\"public\".\"User\"",
+          "[\"id\"]",
+          "c",
+          "c"
+        ]
+      }
+    ]
+  }
+]
