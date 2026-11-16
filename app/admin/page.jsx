@@ -5,6 +5,27 @@ import dynamic from "next/dynamic";
 import { isValidEmail, isValidMobileNumber } from "../../lib/validation";
 import VisibilityManager from "./VisibilityManager";
 import IndustryPlansManager from "./IndustryPlansManager";
+import "../dashboard/dashboard.css";
+
+const WORKFORCE_TABS = new Set([
+  'agency-dashboard',
+  'directory',
+  'employee-performance',
+  'seller-dashboard',
+  'remarks-sales',
+  'clients',
+  'deliverables',
+  'feedback',
+  'payments',
+  'pending-payments',
+  'renewals',
+  'campaign-deliveries',
+  'brand-onboarding',
+  'tasks',
+  'dev-dashboard',
+  'leaves',
+  'attendance'
+]);
 
 const WorkforceAdminView = dynamic(() => import("../dashboard/admin/page"), {
   loading: () => (
@@ -68,16 +89,16 @@ export default function AdminPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
   const [authError, setAuthError] = useState("");
-  const [activeTab, setActiveTab] = useState("overview");
-  const [adminSuite, setAdminSuite] = useState("website"); // "website" or "workforce"
+  const [activeTab, setActiveTab] = useState("agency-dashboard");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      const s = params.get("suite");
-      if (s === "workforce") {
-        setAdminSuite("workforce");
+      const tabParam = params.get("tab");
+      if (tabParam) {
+        setActiveTab(tabParam);
       }
     }
   }, []);
@@ -348,9 +369,36 @@ export default function AdminPage() {
     return () => clearInterval(timer);
   }, [activeTab, visitorAutoRefresh, visitorRange, visitorSearch, visitorPage]);
 
-  // Auth checking on mount disabled to force manual login
+  // Automatic session authentication check on mount
   useEffect(() => {
-    // Explicit email/password input is required to access the admin panel.
+    async function checkAdminAuth() {
+      try {
+        const res = await fetch("/api/admin/auth");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.authenticated) {
+            setIsAuthenticated(true);
+            setCheckingAuth(false);
+            loadAllData();
+            return;
+          }
+        }
+        const meRes = await fetch("/api/auth/me");
+        if (meRes.ok) {
+          const meData = await meRes.json();
+          if (meData?.user && (meData.user.role === "ADMIN" || meData.user.role === "CEO")) {
+            setIsAuthenticated(true);
+            setCheckingAuth(false);
+            loadAllData();
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn("Admin session verification failed:", err);
+      }
+      setCheckingAuth(false);
+    }
+    checkAdminAuth();
   }, []);
 
 
@@ -1156,6 +1204,34 @@ export default function AdminPage() {
     }
   };
 
+  if (checkingAuth) {
+    return (
+      <div style={{
+        minHeight: "100vh",
+        background: "#0d1e19",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#e5dec9",
+        gap: "16px",
+        fontFamily: "sans-serif"
+      }}>
+        <div style={{
+          width: "42px",
+          height: "42px",
+          border: "3px solid rgba(212, 175, 55, 0.25)",
+          borderTopColor: "#d4af37",
+          borderRadius: "50%",
+          animation: "spin 0.8s linear infinite"
+        }} />
+        <span style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "0.02em" }}>
+          Verifying Admin Authorization...
+        </span>
+      </div>
+    );
+  }
+
   if (!isAuthenticated) {
     return (
       <div style={styles.loginContainer}>
@@ -1254,55 +1330,6 @@ export default function AdminPage() {
           </div>
         </div>
 
-        {/* Suite Switcher Bar */}
-        <div style={{ display: "flex", alignItems: "center", gap: "4px", background: "rgba(15, 23, 42, 0.8)", padding: "4px", borderRadius: "10px", border: "1px solid rgba(255, 255, 255, 0.1)" }}>
-          <button
-            type="button"
-            onClick={() => setAdminSuite("website")}
-            style={{
-              padding: "7px 14px",
-              borderRadius: "8px",
-              fontSize: "12px",
-              fontWeight: "700",
-              cursor: "pointer",
-              border: "none",
-              background: adminSuite === "website" ? "linear-gradient(135deg, #1e4d42 0%, #2a6f60 100%)" : "transparent",
-              color: adminSuite === "website" ? "#ffffff" : "#94a3b8",
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              boxShadow: adminSuite === "website" ? "0 2px 8px rgba(0,0,0,0.3)" : "none",
-              transition: "all 0.2s"
-            }}
-          >
-            <Icon name="language" style={{ fontSize: "16px" }} />
-            <span>Website Suite</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setAdminSuite("workforce")}
-            style={{
-              padding: "7px 14px",
-              borderRadius: "8px",
-              fontSize: "12px",
-              fontWeight: "700",
-              cursor: "pointer",
-              border: "none",
-              background: adminSuite === "workforce" ? "linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%)" : "transparent",
-              color: adminSuite === "workforce" ? "#ffffff" : "#94a3b8",
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              boxShadow: adminSuite === "workforce" ? "0 2px 8px rgba(0,0,0,0.3)" : "none",
-              transition: "all 0.2s"
-            }}
-          >
-            <Icon name="badge" style={{ fontSize: "16px" }} />
-            <span>Workforce & Management Suite</span>
-          </button>
-        </div>
-
         <div style={styles.headerRight}>
           <a href="/" target="_blank" rel="noopener noreferrer" style={styles.viewSiteLink}>
             <Icon name="open_in_new" /> Live Site
@@ -1313,29 +1340,133 @@ export default function AdminPage() {
         </div>
       </header>
 
-      {/* Main Suite Content */}
-      {adminSuite === "workforce" ? (
-        <div style={{ flex: 1, minHeight: "calc(100vh - 65px)", background: "#020617" }}>
-          <WorkforceAdminView />
-        </div>
-      ) : (
-      /* Main Container for Website Suite */
+      {/* Main Container for Unified Admin Dashboard */}
       <main className="admin-main-grid" style={styles.mainGrid}>
         {/* Navigation Sidebar */}
         <aside className="admin-sidebar" style={styles.sidebar}>
+          {/* Section 1: Workforce & Agency Operations */}
+          <div style={{ padding: "6px 12px 4px", fontSize: "11px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", color: "#60a5fa", display: "flex", alignItems: "center", gap: "6px" }}>
+            <Icon name="groups" style={{ fontSize: "16px" }} />
+            <span>Workforce & Agency</span>
+          </div>
+
           <button
-            onClick={() => { setActiveTab("overview"); setEditingBlog(null); }}
-            style={{ ...styles.sidebarBtn, ...(activeTab === "overview" ? styles.sidebarBtnActive : {}) }}
+            onClick={() => { setActiveTab("agency-dashboard"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "agency-dashboard" ? styles.sidebarBtnActive : {}) }}
           >
-            <Icon name="analytics" /> Overview Dashboard
+            <Icon name="corporate_fare" /> Agency Dashboard
           </button>
+
+          <button
+            onClick={() => { setActiveTab("directory"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "directory" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="badge" /> Employee Directory
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("employee-performance"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "employee-performance" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="military_tech" /> Employee Performance
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("tasks"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "tasks" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="checklist" /> Department Tasks
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("deliverables"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "deliverables" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="task_alt" /> Task Deliverables
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("clients"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "clients" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="domain" /> Client CRM
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("payments"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "payments" || activeTab === "pending-payments" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="payments" /> Payments & Accounts
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("renewals"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "renewals" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="autorenew" /> Plan Renewals
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("attendance"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "attendance" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="history_toggle_off" /> Attendance Register
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("leaves"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "leaves" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="event_busy" /> Leave Requests
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("seller-dashboard"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "seller-dashboard" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="call" /> Seller Dashboard
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("remarks-sales"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "remarks-sales" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="history" /> Remarks Sales Person
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("dev-dashboard"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "dev-dashboard" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="terminal" /> Dev Dashboard
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("campaign-deliveries"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "campaign-deliveries" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="send" /> Campaign Deliveries
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("feedback"); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "feedback" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="forum" /> Client Feedback
+          </button>
+
+          {/* Section 2: Website CMS & Marketing Controls */}
+          <div style={{ marginTop: "16px", padding: "6px 12px 4px", fontSize: "11px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", color: "#34d399", display: "flex", alignItems: "center", gap: "6px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+            <Icon name="language" style={{ fontSize: "16px" }} />
+            <span>Website CMS & Controls</span>
+          </div>
 
           <button
             onClick={() => { setActiveTab("visitors"); setEditingBlog(null); loadVisitorsData(); }}
             style={{ ...styles.sidebarBtn, ...(activeTab === "visitors" ? styles.sidebarBtnActive : {}) }}
           >
             <Icon name="group" /> Live Visitors & Traffic
-            {stats.counts?.live_online > 0 ? (
+            {stats.counts?.live_online > 0 && (
               <span style={{
                 marginLeft: "auto",
                 backgroundColor: "#10B981",
@@ -1351,10 +1482,6 @@ export default function AdminPage() {
                 <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#000", display: "inline-block" }}></span>
                 {stats.counts.live_online} LIVE
               </span>
-            ) : (
-              <span style={{ marginLeft: "auto", color: "#64748b", fontSize: "11px" }}>
-                {stats.counts?.visitors_today || 0} today
-              </span>
             )}
           </button>
 
@@ -1363,7 +1490,7 @@ export default function AdminPage() {
             style={{ ...styles.sidebarBtn, ...(activeTab === "visibility" ? styles.sidebarBtnActive : {}) }}
           >
             <Icon name="tune" /> Page & Section Controls
-            {visibilityCounts.hidden > 0 ? (
+            {visibilityCounts.hidden > 0 && (
               <span
                 style={{
                   marginLeft: "auto",
@@ -1377,10 +1504,6 @@ export default function AdminPage() {
               >
                 {visibilityCounts.hidden} HIDDEN
               </span>
-            ) : (
-              <span style={{ marginLeft: "auto", color: "#10B981", fontSize: "11px", fontWeight: "700" }}>
-                Active
-              </span>
             )}
           </button>
 
@@ -1388,45 +1511,37 @@ export default function AdminPage() {
             onClick={() => { setActiveTab("industry_plans"); setEditingBlog(null); }}
             style={{ ...styles.sidebarBtn, ...(activeTab === "industry_plans" ? styles.sidebarBtnActive : {}) }}
           >
-            <Icon name="payments" /> Industry Plans & Pricing
+            <Icon name="sell" /> Industry Plans & Pricing
           </button>
 
           <button
             onClick={() => { setActiveTab("portfolio"); setEditingBlog(null); }}
             style={{ ...styles.sidebarBtn, ...(activeTab === "portfolio" ? styles.sidebarBtnActive : {}) }}
           >
-            <Icon name="dashboard" /> Portfolio Showcase
+            <Icon name="photo_library" /> Portfolio Showcase
           </button>
+
           <button
             onClick={() => { setActiveTab("blogs"); setEditingBlog(null); }}
             style={{ ...styles.sidebarBtn, ...(activeTab === "blogs" ? styles.sidebarBtnActive : {}) }}
           >
             <Icon name="article" /> Blogs Editor
           </button>
+
           <button
             onClick={() => { setActiveTab("whatsapp"); setEditingBlog(null); loadWhatsAppInfo(); }}
             style={{ ...styles.sidebarBtn, ...(activeTab === "whatsapp" ? styles.sidebarBtnActive : {}) }}
           >
-            <Icon name="forum" /> WhatsApp Alerts
+            <Icon name="chat" /> WhatsApp Alerts
           </button>
-          <button
-            onClick={() => { setActiveTab("onboarding"); setEditingBlog(null); loadOnboardingData(); }}
-            style={{ ...styles.sidebarBtn, ...(activeTab === "onboarding" ? styles.sidebarBtnActive : {}) }}
-          >
-            <Icon name="assignment_ind" /> Onboarding Clients
-          </button>
-          <button
-            onClick={() => { setActiveTab("reminders"); setEditingBlog(null); loadRemindersData(); }}
-            style={{ ...styles.sidebarBtn, ...(activeTab === "reminders" ? styles.sidebarBtnActive : {}) }}
-          >
-            <Icon name="alarm" /> Payment Reminders
-          </button>
+
           <button
             onClick={() => { setActiveTab("promos"); setEditingBlog(null); loadPromoData(); }}
             style={{ ...styles.sidebarBtn, ...(activeTab === "promos" ? styles.sidebarBtnActive : {}) }}
           >
-            <Icon name="sell" /> Promo Codes
+            <Icon name="local_offer" /> Promo Codes
           </button>
+
           <button
             onClick={() => { setActiveTab("applications"); setEditingBlog(null); loadApplicationsData(); }}
             style={{ ...styles.sidebarBtn, ...(activeTab === "applications" ? styles.sidebarBtnActive : {}) }}
@@ -1434,20 +1549,34 @@ export default function AdminPage() {
             <Icon name="work" /> Job Applications
           </button>
 
-          <div style={{ marginTop: "18px", marginBottom: "6px", paddingLeft: "10px", fontSize: "11px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", color: "#60a5fa", display: "flex", alignItems: "center", gap: "6px" }}>
-            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#3b82f6" }}></span>
-            Workforce Portal
-          </div>
           <button
-            type="button"
-            onClick={() => setAdminSuite("workforce")}
-            style={{ ...styles.sidebarBtn, backgroundColor: "rgba(37, 99, 235, 0.14)", color: "#93c5fd", border: "1px solid rgba(59, 130, 246, 0.25)" }}
+            onClick={() => { setActiveTab("onboarding"); setEditingBlog(null); loadOnboardingData(); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "onboarding" ? styles.sidebarBtnActive : {}) }}
           >
-            <Icon name="badge" /> Agency & Employees &rarr;
+            <Icon name="assignment_ind" /> Onboarding Clients
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("reminders"); setEditingBlog(null); loadRemindersData(); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "reminders" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="alarm" /> Payment Reminders
+          </button>
+
+          <button
+            onClick={() => { setActiveTab("overview"); setEditingBlog(null); }}
+            style={{ ...styles.sidebarBtn, ...(activeTab === "overview" ? styles.sidebarBtnActive : {}) }}
+          >
+            <Icon name="analytics" /> System Overview
           </button>
         </aside>
 
-        {/* Workspace Content */}
+        {/* Content Section: Either Workforce Component or Website CMS Section */}
+        {WORKFORCE_TABS.has(activeTab) ? (
+          <div style={{ flex: 1, minHeight: "calc(100vh - 65px)", background: "#020617", overflow: "hidden" }}>
+            <WorkforceAdminView initialTab={activeTab} activeTabOverride={activeTab} embedded={true} />
+          </div>
+        ) : (
         <section className="admin-content" style={styles.content}>
           {activeTab === "overview" && (
             <div>
@@ -4078,8 +4207,8 @@ export default function AdminPage() {
             />
           )}
         </section>
+        )}
       </main>
-      )}
     </div>
   );
 }
@@ -4259,15 +4388,20 @@ const styles = {
   },
   mainGrid: {
     display: "grid",
-    gridTemplateColumns: "240px 1fr",
+    gridTemplateColumns: "260px 1fr",
     minHeight: "calc(100vh - 69px)"
   },
   sidebar: {
-    padding: "24px 16px",
-    borderRight: "1px solid rgba(255, 255, 255, 0.06)",
+    padding: "16px 12px",
+    borderRight: "1px solid rgba(255, 255, 255, 0.08)",
+    backgroundColor: "rgba(15, 23, 42, 0.8)",
     display: "flex",
     flexDirection: "column",
-    gap: "8px"
+    gap: "4px",
+    height: "calc(100vh - 69px)",
+    overflowY: "auto",
+    position: "sticky",
+    top: "69px"
   },
   sidebarBtn: {
     display: "flex",

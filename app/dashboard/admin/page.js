@@ -200,11 +200,17 @@ const parseReqStringToCounts = (reqStr) => {
   return { c, r, a };
 };
 
-export default function AdminDashboard({ initialTab } = {}) {
+export default function AdminDashboard({ initialTab, embedded = false, activeTabOverride } = {}) {
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState(null);
   const [activeTab, setActiveTab] = useState(initialTab || 'agency-dashboard'); // agency-dashboard, overview, directory, tasks, leaves, attendance
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (activeTabOverride && activeTabOverride !== activeTab) {
+      setActiveTab(activeTabOverride);
+    }
+  }, [activeTabOverride]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -2948,6 +2954,7 @@ export default function AdminDashboard({ initialTab } = {}) {
       )}
 
       {/* Responsive Sidebar Panel */}
+      {!embedded && (
       <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col justify-between shrink-0 transform transition-all duration-300 ease-in-out ${
         sidebarCollapsed ? 'lg:hidden' : 'lg:translate-x-0 lg:static lg:h-full'
       } ${
@@ -3249,11 +3256,13 @@ export default function AdminDashboard({ initialTab } = {}) {
           </button>
         </div>
       </aside>
+      )}
 
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
         
         {/* Header */}
+        {!embedded ? (
         <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-between px-3 sm:px-6 lg:px-8 shrink-0 transition-colors z-10">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             {/* Hamburger Button for Mobile/Tablet */}
@@ -3295,12 +3304,12 @@ export default function AdminDashboard({ initialTab } = {}) {
           
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <a
-              href="/admin?suite=website"
+              href="/admin"
               className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-950/70 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-400 rounded-xl text-xs font-semibold transition cursor-pointer"
-              title="Switch to Website & Marketing Suite"
+              title="Return to Unified Admin Dashboard"
             >
               <Globe className="w-3.5 h-3.5" />
-              <span>Website Admin Suite &rarr;</span>
+              <span>Unified Admin &rarr;</span>
             </a>
             <button
               onClick={() => setShowCollectionReportModal(true)}
@@ -3321,19 +3330,31 @@ export default function AdminDashboard({ initialTab } = {}) {
                 </>
               ) : (
                 <>
-                  <Moon className="w-4 h-4 text-slate-600 fill-slate-600/20" />
+                  <Moon className="w-4 h-4 text-blue-400 fill-blue-400/20" />
                   <span className="hidden sm:inline text-[11px] font-semibold text-slate-600">Dark</span>
                 </>
               )}
             </button>
-
-            <div className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-200/50 dark:border-slate-700/50">
-              <Calendar className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-blue-500 shrink-0" />
-              <span className="hidden md:inline">{new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
-              <span className="md:hidden">{new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-            </div>
           </div>
         </header>
+        ) : (
+          <div className="h-12 border-b border-slate-800 bg-slate-900/60 flex items-center justify-between px-4 shrink-0">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                Workforce Module &bull; {activeTab.replace('-', ' ')}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setShowCollectionReportModal(true)}
+                className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer"
+              >
+                <TrendingUp className="w-3.5 h-3.5" />
+                <span>Collection Report</span>
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Tab Content Container */}
         <div className="p-3 sm:p-5 lg:p-8 flex-1 overflow-y-auto overflow-x-hidden">

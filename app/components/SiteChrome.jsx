@@ -144,180 +144,29 @@ export function SiteHeader({ active = "home" }) {
         ))}
       </div>
       <div className="nav-actions-wrapper" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        {/* Upper Portal & Credential Access */}
-        <div
-          className="portal-dropdown-container"
-          style={{ position: "relative" }}
-          onMouseEnter={() => setLoginMenuOpen(true)}
-          onMouseLeave={() => setLoginMenuOpen(false)}
+        {/* Simple Login Button */}
+        <a
+          className="nav-button nav-button-employee"
+          href="/login"
+          title="Login to Portal"
+          style={{
+            background: "rgba(30, 77, 66, 0.08)",
+            border: "1px solid rgba(30, 77, 66, 0.25)",
+            color: "#1e4d42",
+            padding: "8px 16px",
+            fontSize: "0.85rem",
+            fontWeight: 600,
+            borderRadius: "8px",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "6px",
+            textDecoration: "none",
+            cursor: "pointer"
+          }}
         >
-          <a
-            className="nav-button nav-button-employee"
-            href="/login"
-            title="Portal & Credential Login (Admin, Management, Staff)"
-            onClick={(e) => {
-              if (typeof window !== "undefined" && window.innerWidth <= 768) {
-                e.preventDefault();
-                setLoginMenuOpen(!loginMenuOpen);
-              }
-            }}
-            style={{
-              background: "rgba(30, 77, 66, 0.08)",
-              border: "1px solid rgba(30, 77, 66, 0.25)",
-              color: "#1e4d42",
-              padding: "8px 14px",
-              fontSize: "0.85rem",
-              fontWeight: 600,
-              borderRadius: "8px",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              textDecoration: "none",
-              cursor: "pointer"
-            }}
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: "17px" }}>login</span>
-            Login / Portals
-            <span
-              className="material-symbols-outlined"
-              style={{
-                fontSize: "15px",
-                transform: loginMenuOpen ? "rotate(180deg)" : "none",
-                transition: "transform 0.2s"
-              }}
-            >
-              expand_more
-            </span>
-          </a>
-
-          {loginMenuOpen && (
-            <div
-              className="portal-dropdown-menu"
-              style={{
-                position: "absolute",
-                top: "100%",
-                right: 0,
-                marginTop: "6px",
-                width: "275px",
-                background: "#ffffff",
-                borderRadius: "12px",
-                boxShadow: "0 14px 40px rgba(14, 39, 33, 0.18), 0 2px 10px rgba(0, 0, 0, 0.05)",
-                border: "1px solid #e5dec9",
-                padding: "8px",
-                zIndex: 1000,
-                display: "flex",
-                flexDirection: "column",
-                gap: "3px"
-              }}
-            >
-              <div
-                style={{
-                  padding: "6px 10px 4px",
-                  fontSize: "10.5px",
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.06em",
-                  color: "#5c6460",
-                  borderBottom: "1px solid #efe9dc"
-                }}
-              >
-                Access as per Credential
-              </div>
-              <a
-                href="/admin"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  padding: "9px 12px",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  color: "#1e4d42",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  transition: "background 0.15s"
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "#f4f8f6")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-              >
-                <span style={{ fontSize: "18px" }}>🛡️</span>
-                <div>
-                  <div style={{ lineHeight: 1.2 }}>Super Admin Portal</div>
-                  <div style={{ fontSize: "11px", color: "#5c6460", fontWeight: 400 }}>admin@aidigital.com</div>
-                </div>
-              </a>
-              <a
-                href="/admin?suite=workforce"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  padding: "9px 12px",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  color: "#1e4d42",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  transition: "background 0.15s"
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "#f4f8f6")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-              >
-                <span style={{ fontSize: "18px" }}>👔</span>
-                <div>
-                  <div style={{ lineHeight: 1.2 }}>Management Admin</div>
-                  <div style={{ fontSize: "11px", color: "#5c6460", fontWeight: 400 }}>praveen@aidigital.com</div>
-                </div>
-              </a>
-              <a
-                href="/login?role=employee"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  padding: "9px 12px",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  color: "#1e4d42",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  transition: "background 0.15s"
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "#f4f8f6")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-              >
-                <span style={{ fontSize: "18px" }}>👥</span>
-                <div>
-                  <div style={{ lineHeight: 1.2 }}>Workforce & Employees</div>
-                  <div style={{ fontSize: "11px", color: "#5c6460", fontWeight: 400 }}>Designers, Editors, TL, Sales</div>
-                </div>
-              </a>
-              <a
-                href="/login?tab=client"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  padding: "9px 12px",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  color: "#1e4d42",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  transition: "background 0.15s"
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "#f4f8f6")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-              >
-                <span style={{ fontSize: "18px" }}>🏢</span>
-                <div>
-                  <div style={{ lineHeight: 1.2 }}>Client Delivery Portal</div>
-                  <div style={{ fontSize: "11px", color: "#5c6460", fontWeight: 400 }}>client@aidigital.com</div>
-                </div>
-              </a>
-            </div>
-          )}
-        </div>
+          <span className="material-symbols-outlined" style={{ fontSize: "17px" }}>login</span>
+          Login
+        </a>
         {isVisible("home_contact") ? (
           <a className="nav-button" href="/#contact">Contact Us &rarr;</a>
         ) : null}
@@ -340,44 +189,14 @@ export function SiteHeader({ active = "home" }) {
             </a>
           ))}
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.15)", paddingTop: "10px", marginTop: "6px", display: "flex", flexDirection: "column", gap: "6px" }}>
-            <div style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "#B9974F", padding: "0 4px" }}>
-              Workforce & Admin Portals
-            </div>
-            <a
-              className="mobile-menu-cta"
-              href="/admin"
-              style={{ background: "rgba(30, 77, 66, 0.45)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "8px", padding: "10px 14px", borderRadius: "8px", fontSize: "13px" }}
-              onClick={() => setMenuOpen(false)}
-            >
-              <span>🛡️</span>
-              <span>Super Admin Portal</span>
-            </a>
-            <a
-              className="mobile-menu-cta"
-              href="/admin?suite=workforce"
-              style={{ background: "rgba(30, 77, 66, 0.45)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "8px", padding: "10px 14px", borderRadius: "8px", fontSize: "13px" }}
-              onClick={() => setMenuOpen(false)}
-            >
-              <span>👔</span>
-              <span>Management Admin (Praveen)</span>
-            </a>
             <a
               className="mobile-menu-cta"
               href="/login"
               style={{ background: "#1e4d42", color: "#fff", display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "8px", padding: "10px 14px", borderRadius: "8px", fontSize: "13px" }}
               onClick={() => setMenuOpen(false)}
             >
-              <span>👥</span>
-              <span>Workforce / Employee Login</span>
-            </a>
-            <a
-              className="mobile-menu-cta"
-              href="/login?tab=client"
-              style={{ background: "rgba(185, 151, 79, 0.25)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "8px", padding: "10px 14px", borderRadius: "8px", fontSize: "13px" }}
-              onClick={() => setMenuOpen(false)}
-            >
-              <span>🏢</span>
-              <span>Client Delivery Portal</span>
+              <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>login</span>
+              <span>Login to Dashboard / Portal</span>
             </a>
           </div>
           {isVisible("home_contact") && (

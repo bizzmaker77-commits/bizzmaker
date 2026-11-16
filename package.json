@@ -7,7 +7,9 @@
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
     "start": "next start --hostname 127.0.0.1",
-    "seed:dummy": "node scripts/generate-dummy-db.js"
+    "seed:dummy": "node scripts/generate-dummy-db.js",
+    "db:export": "node scripts/consolidate-full-database.js",
+    "db:push": "node scripts/push-to-new-database.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

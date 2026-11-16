@@ -28,10 +28,12 @@ export async function POST(request) {
     }
 
     // Establish client session, clear staff session
+    const isHttps = request.nextUrl.protocol === 'https:' || request.headers.get('x-forwarded-proto') === 'https';
     const cookieStore = await cookies();
     cookieStore.set('clientId', client.clientId, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: isHttps,
+      sameSite: 'lax',
       maxAge: 60 * 60 * 24 * 7, // 1 week
       path: '/'
     });

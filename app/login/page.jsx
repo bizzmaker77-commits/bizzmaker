@@ -177,54 +177,50 @@ export default function LoginPage() {
     }
   }, [email, hasWelcomedNikhil]);
 
-  // Session check
+  const [currentUser, setCurrentUser] = useState(null);
+
+  // Session check - inform user of existing session without hijack redirect
   useEffect(() => {
     async function checkSession() {
       try {
-        if (typeof window !== 'undefined' && window.location.search.includes('autoLogout')) {
-          setCheckingSession(false);
-          return;
-        }
-
         const res = await fetch('/api/auth/me');
         if (res.ok) {
           const data = await res.json();
           if (data?.user) {
-            routeUser(data.user);
-            return;
+            setCurrentUser(data.user);
           }
         }
-        setCheckingSession(false);
       } catch (err) {
+        // Silently ignore session check errors
+      } finally {
         setCheckingSession(false);
       }
     }
     checkSession();
-  }, [router]);
+  }, []);
 
   const routeUser = (user) => {
     const role = user?.role;
-    const userEmail = user?.email?.toLowerCase().trim();
-
-    if (userEmail === 'praveen@aidigital.com') {
-      router.push('/admin?suite=workforce');
-      return;
-    }
+    let target = '/dashboard';
 
     if (role === 'ADMIN') {
-      router.push('/admin');
+      target = '/admin';
     } else if (role === 'CEO') {
-      router.push('/dashboard/ceo');
+      target = '/dashboard/ceo';
     } else if (role === 'TL') {
-      router.push('/dashboard/tl');
+      target = '/dashboard/tl';
     } else if (role === 'EMPLOYEE') {
-      router.push('/dashboard/employee');
+      target = '/dashboard/employee';
     } else if (role === 'SALES') {
-      router.push('/dashboard/sales');
+      target = '/dashboard/sales';
     } else if (role === 'CLIENT') {
-      router.push('/dashboard/client');
+      target = '/dashboard/client';
+    }
+
+    if (typeof window !== 'undefined') {
+      window.location.href = target;
     } else {
-      router.push('/dashboard');
+      router.push(target);
     }
   };
 
@@ -267,7 +263,11 @@ export default function LoginPage() {
           setLoading(false);
           return;
         }
-        router.push('/dashboard/client');
+        if (typeof window !== 'undefined') {
+          window.location.href = '/dashboard/client';
+        } else {
+          router.push('/dashboard/client');
+        }
       } catch (err) {
         setError('Unable to reach server. Please check connection.');
         setLoading(false);
@@ -478,51 +478,7 @@ export default function LoginPage() {
             </span>
           </div>
 
-          {/* ================================================================
-              UPPER AREA: Quick Role & Credential Buttons as requested
-              "in upper area provide a login button as per credintial admin management admin and other employees"
-              ================================================================ */}
-          <div className="wf-quick-credentials-container">
-            <div className="wf-qc-header">
-              <span className="wf-qc-title">
-                <Users size={14} style={{ color: '#2563eb' }} />
-                1-Click Quick Credentials (Upper Access)
-              </span>
-              <span className="wf-qc-badge">Dummy DB Active</span>
-            </div>
 
-            <div className="wf-credentials-grid">
-              {CREDENTIAL_PRESETS.map((preset) => {
-                const isSelected = activePreset === preset.key;
-                return (
-                  <button
-                    key={preset.key}
-                    type="button"
-                    onClick={() => applyPreset(preset)}
-                    className={`wf-cred-chip ${isSelected ? 'active' : ''}`}
-                    title={`Click to fill ${preset.label} credentials`}
-                  >
-                    <span className="wf-cred-emoji">{preset.emoji}</span>
-                    <div className="wf-cred-info">
-                      <div className="wf-cred-name">{preset.label}</div>
-                      <div className="wf-cred-email">{preset.email.split('@')[0]}@</div>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {selectedPresetObj && (
-              <div className="wf-selected-notice">
-                <div>
-                  <strong>{selectedPresetObj.emoji} Active:</strong> {selectedPresetObj.label} ({selectedPresetObj.email})
-                </div>
-                <div style={{ fontWeight: 600, color: '#0369a1' }}>
-                  Routes &rarr; {selectedPresetObj.target}
-                </div>
-              </div>
-            )}
-          </div>
 
           {/* Mode Tabs: Staff Login / Sign Up / Client Portal */}
           <div className="wf-mode-tabs">
@@ -574,9 +530,124 @@ export default function LoginPage() {
                 ? 'Enter your registered email address to inspect project milestones and deliverables.'
                 : isSignUp
                 ? 'Self-register into the workforce directory to start your shift and receive tasks.'
-                : 'Enter your corporate credentials or choose a quick role from the upper bar.'}
+                : 'Enter your corporate credentials to access your dedicated workspace.'}
             </p>
           </div>
+
+          {/* Active Session Notice */}
+          {currentUser && (
+            <div style={{
+              background: '#eff6ff',
+              border: '1px solid #bfdbfe',
+              borderRadius: '8px',
+              padding: '10px 14px',
+              marginBottom: '14px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              fontSize: '12.5px',
+              color: '#1e40af'
+            }}>
+              <div>
+                <strong>Active Session:</strong> {currentUser.name || currentUser.email} ({currentUser.role})
+              </div>
+              <button
+                type="button"
+                onClick={() => routeUser(currentUser)}
+                style={{
+                  background: '#2563eb',
+                  color: '#fff',
+                  border: 'none',
+                  padding: '5px 12px',
+                  borderRadius: '6px',
+                  fontSize: '11.5px',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+              >
+                Go to Workspace &rarr;
+              </button>
+            </div>
+          )}
+
+          {/* Quick Preset Selector for Easy Testing */}
+          {!isSignUp && (
+            <div style={{
+              background: '#f8fafc',
+              border: '1px solid #e2e8f0',
+              borderRadius: '10px',
+              padding: '10px 12px',
+              marginBottom: '16px'
+            }}>
+              <div style={{
+                fontSize: '11px',
+                fontWeight: 700,
+                color: '#64748b',
+                textTransform: 'uppercase',
+                letterSpacing: '0.04em',
+                marginBottom: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between'
+              }}>
+                <span>Demo Accounts (Click to auto-fill)</span>
+                {activePreset && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActivePreset(null);
+                      setEmail('');
+                      setPassword('');
+                    }}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#0284c7',
+                      cursor: 'pointer',
+                      fontSize: '11px',
+                      fontWeight: 600
+                    }}
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '6px'
+              }}>
+                {CREDENTIAL_PRESETS.map((p) => {
+                  const isSelected = activePreset === p.key;
+                  return (
+                    <button
+                      key={p.key}
+                      type="button"
+                      onClick={() => applyPreset(p)}
+                      title={`${p.label} (${p.email})`}
+                      style={{
+                        padding: '4px 9px',
+                        borderRadius: '6px',
+                        border: isSelected ? '1.5px solid #2563eb' : '1px solid #cbd5e1',
+                        background: isSelected ? '#eff6ff' : '#ffffff',
+                        color: isSelected ? '#1e40af' : '#334155',
+                        fontSize: '11.5px',
+                        fontWeight: isSelected ? 700 : 500,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                        transition: 'all 0.15s ease'
+                      }}
+                    >
+                      <span>{p.emoji}</span>
+                      <span>{p.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {/* Auto Logout Notice */}
           {autoLogoutNotice && (
@@ -686,16 +757,9 @@ export default function LoginPage() {
                   <div className="wf-field-label-row">
                     <label className="wf-field-label">Password</label>
                     {!isSignUp && (
-                      <a
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          alert('Use the quick buttons in the upper bar to test any role with pre-configured passwords!');
-                        }}
-                        className="wf-field-link"
-                      >
-                        Quick Help?
-                      </a>
+                      <span style={{ fontSize: '12px', color: '#64748b' }}>
+                        Required
+                      </span>
                     )}
                   </div>
                   <div className="wf-input-wrapper">
