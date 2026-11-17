@@ -1,9 +1,9 @@
 {
   "industries": [
     {
-      "id": "real-estate",
-      "name": "Real Estate",
-      "badge": "Digital Marketing Partner for Real Estate Channel Partners",
+      "id": "agency-services",
+      "name": "Agency Services & Growth Plans",
+      "badge": "Official Marketing, Media & Technology Plans",
       "tagline": "Your Success Our Business",
       "bannerImage": "/Price_CP.jpg",
       "contactPhone": "9096090701",
@@ -11,139 +11,172 @@
       "contactLocation": "Office No: 315, Boulevard Tower, Bramha Corp, Camp, Pune, Maharashtra 411001",
       "cpTiers": [
         {
-          "id": "cp_80l",
-          "name": "Project Upto ₹80 Lakh",
-          "scope": "Project upto ₹80 Lakh",
-          "ticketRange": "Upto ₹80 Lakh",
-          "price": 75000,
-          "priceDisplay": "75,000",
-          "period": "for 3 Months",
-          "monthlyEffective": "₹25,000 Effective per Month",
-          "subtitle": "Tailored for affordable & mid-segment residential projects",
-          "icon": "apartment",
-          "popular": false
-        },
-        {
-          "id": "cp_1_5cr",
-          "name": "Project ₹80 Lakh to ₹1.5 Cr",
-          "scope": "Project ₹80 Lakh to ₹1.5 Cr",
-          "ticketRange": "₹80 Lakh - ₹1.5 Cr",
-          "price": 90000,
-          "priceDisplay": "90,000",
-          "period": "for 3 Months",
-          "monthlyEffective": "₹30,000 Effective per Month",
-          "subtitle": "Best for premium 2 & 3 BHK homes and suburban developments",
-          "icon": "domain",
+          "id": "plan_google_ads",
+          "name": "Google Ads Management",
+          "scope": "Google Ads Management",
+          "ticketRange": "Paid Search & PPC",
+          "category": "ads",
+          "price": 7500,
+          "priceDisplay": "7,500",
+          "period": "per Month",
+          "monthlyEffective": "₹7,500 Effective per Month",
+          "subtitle": "High-Intent Google Search, PPC, Display & Performance Max Ad Campaigns",
+          "icon": "ads_click",
           "popular": true
         },
         {
-          "id": "cp_3cr",
-          "name": "Project ₹1.5 Cr to ₹3 Cr",
-          "scope": "Project ₹1.5 Cr to ₹3 Cr",
-          "ticketRange": "₹1.5 Cr - ₹3 Cr",
-          "price": 150000,
-          "priceDisplay": "1.5 Lakh",
-          "period": "for 3 Months",
-          "monthlyEffective": "₹50,000 Effective per Month",
-          "subtitle": "Designed for luxury apartments, penthouses & premium retail",
-          "icon": "corporate_fare",
+          "id": "plan_meta_ads",
+          "name": "Meta Ads (FB & Instagram)",
+          "scope": "Meta Ads",
+          "ticketRange": "Paid Social",
+          "category": "ads",
+          "price": 3000,
+          "priceDisplay": "3,000",
+          "period": "per Month",
+          "monthlyEffective": "₹3,000 Effective per Month",
+          "subtitle": "Laser-Targeted Instagram & Facebook Paid Ads & Retargeting Funnels",
+          "icon": "share",
           "popular": false
         },
         {
-          "id": "cp_above_3cr",
-          "name": "Project Above ₹3 Cr & Builders",
-          "scope": "Project Above ₹3 Cr / Builders",
-          "ticketRange": "Above ₹3 Cr & Builders",
-          "price": 200000,
-          "priceDisplay": "2 Lakh",
-          "period": "for 3 Months",
-          "monthlyEffective": "₹66,667 Effective per Month",
-          "subtitle": "Full-scale engine for ultra-luxury villas & builder flagship launches",
-          "icon": "location_city",
+          "id": "plan_performance_marketing",
+          "name": "Performance Marketing",
+          "scope": "Performance Marketing (Meta & Google)",
+          "ticketRange": "Multi-Channel Growth",
+          "category": "ads",
+          "price": 5000,
+          "priceDisplay": "5,000 / 10,000",
+          "period": "per Month",
+          "monthlyEffective": "Meta ₹5,000 | Google ₹10,000",
+          "subtitle": "Data-Backed CAC Reduction, Conversion Funnel Optimization & ROAS Scaling",
+          "icon": "trending_up",
+          "popular": true
+        },
+        {
+          "id": "plan_reel_shoot",
+          "name": "Reel Shoot with Model",
+          "scope": "Reel Shoot with Model",
+          "ticketRange": "Media Production",
+          "category": "media",
+          "price": 6000,
+          "priceDisplay": "6,000",
+          "period": "Starting from",
+          "monthlyEffective": "Starts at ₹6,000 per Shoot",
+          "subtitle": "On-Location Shoot with Professional Models, Scripting & 4K Video Editing",
+          "icon": "videocam",
           "popular": false
+        },
+        {
+          "id": "plan_ai_videos",
+          "name": "AI Videos",
+          "scope": "AI Videos",
+          "ticketRange": "AI Media",
+          "category": "media",
+          "price": 599,
+          "priceDisplay": "599",
+          "period": "Starting from",
+          "monthlyEffective": "Starts at ₹599 per Video",
+          "subtitle": "Cinematic AI Promotional Videos, Realistic Voiceovers & Viral Product Teasers",
+          "icon": "movie",
+          "popular": false
+        },
+        {
+          "id": "plan_social_graphics",
+          "name": "Social Media Graphics (10 Posts)",
+          "scope": "Social Media Graphics",
+          "ticketRange": "Content Pack",
+          "category": "media",
+          "price": 500,
+          "priceDisplay": "500",
+          "period": "for 10 Posts",
+          "monthlyEffective": "Just ₹50 per Custom Creative",
+          "subtitle": "10 Custom High-Res Branded Post Creatives, Flyers & Promotional Banners",
+          "icon": "palette",
+          "popular": true
+        },
+        {
+          "id": "plan_website_dev",
+          "name": "Website Development",
+          "scope": "Website Development",
+          "ticketRange": "Web & Tech",
+          "category": "growth",
+          "price": 5000,
+          "priceDisplay": "5,000",
+          "period": "Starting from",
+          "monthlyEffective": "Starts at ₹5,000 One-Time",
+          "subtitle": "High-Speed, Mobile-Responsive, SEO-Ready Business Website & Landing Pages",
+          "icon": "desktop_windows",
+          "popular": false
+        },
+        {
+          "id": "plan_brand_dev",
+          "name": "Brand Development Program",
+          "scope": "Brand Development Program",
+          "ticketRange": "Brand Authority",
+          "category": "growth",
+          "price": 20000,
+          "priceDisplay": "20,000",
+          "period": "Starting from",
+          "monthlyEffective": "Starts at ₹20,000 One-Time",
+          "subtitle": "360° Complete Brand Identity, Logo Design, Guidelines & Launch Strategy",
+          "icon": "workspace_premium",
+          "popular": true
         }
       ],
       "pillars": [
         {
-          "title": "WhatsApp Marketing + Quality Data",
-          "desc": "Automated broadcast, instant brochure sharing & verified buyer data",
-          "icon": "chat"
+          "title": "Google & Meta Ads Management",
+          "desc": "High-intent Google Search (₹7,500) and laser-targeted Meta Ads (₹3,000) built for scalable lead generation.",
+          "icon": "ads_click"
         },
         {
-          "title": "AI Promotional Videos",
-          "desc": "AI-assisted cinematic property walkthroughs, teasers & social promo videos",
-          "icon": "memory"
+          "title": "Performance Marketing",
+          "desc": "Advanced multi-channel attribution and CAC reduction across Meta (₹5,000) and Google (₹10,000).",
+          "icon": "trending_up"
         },
         {
-          "title": "Lead Verification & Qualification Support",
-          "desc": "Buyer phone outreach, tele-calling & qualification for inquiries",
-          "icon": "filter_alt"
+          "title": "Professional Media & Video Shoots",
+          "desc": "On-location model reel shoots (₹6,000) and high-impact AI promotional video production (₹599).",
+          "icon": "videocam"
         },
         {
-          "title": "Meta Ads, Google & YouTube Ads, and Associate Channel",
-          "desc": "High-intent buyer campaigns across Meta, Google & YouTube plus CP network activation",
-          "icon": "bar_chart"
+          "title": "Content, Web & Brand Growth",
+          "desc": "10 custom social graphics for ₹500, modern websites from ₹5,000, and 360° brand development programs from ₹20,000.",
+          "icon": "workspace_premium"
         }
       ],
       "package": {
-        "id": "cp_1_5cr",
-        "name": "Project ₹80 Lakh to ₹1.5 Cr Plan",
-        "hook": "REAL ESTATE CHANNEL PARTNER MARKETING PLANS",
-        "headline": "Digital Marketing Partner for Real Estate Channel Partners",
-        "subtitle": "Your Success Our Business — Scale Property Sales, Site Visits & Closings",
-        "channelPartner": "AI DIGITAL ASSOCIATE CHANNEL",
-        "price": 90000,
-        "priceDisplay": "90,000",
-        "period": "FOR 3 MONTHS",
         "features": [
-          { "title": "WhatsApp Marketing + Quality Data", "desc": "Automated broadcast, instant brochure sharing & verified buyer data", "icon": "chat" },
-          { "title": "Leads Calling & Verification", "desc": "Proactive buyer outreach, tele-calling & phone qualification for inquiries", "icon": "call" },
-          { "title": "Project Website & Landing Page", "desc": "High-CRO launch microsite with floor plans & automated lead capture funnels", "icon": "desktop_windows" },
-          { "title": "Meta & Youtube & Google Ads", "desc": "High-intent buyer campaigns across Meta (FB & IG), Google Search & YouTube Ads", "icon": "bar_chart" },
-          { "title": "Reels & Short-Form Content", "desc": "Engaging property reels showcasing amenities, site progress & walkthroughs", "icon": "smart_display" },
-          { "title": "AI Promotional Videos", "desc": "AI-assisted cinematic property walkthroughs, teasers & social promo videos", "icon": "memory" },
-          { "title": "Associated Channels", "desc": "Channel partner network collaboration & broker channel activation support", "icon": "handshake" },
-          { "title": "Campaign Monitoring & Optimization", "desc": "Daily ad tracking, continuous ROAS scaling & weekly verified CPL reporting", "icon": "troubleshoot" }
-        ],
-        "outcomes": [
-          "More Quality Leads",
-          "Stronger Brand Presence",
-          "Better Project Visibility",
-          "End-to-End Support"
+          { "title": "Google Ads & PPC Campaigns", "desc": "High-intent keyword targeting, negative keyword filtering, conversion tracking & monthly ROAS scaling (₹7,500/mo).", "icon": "ads_click" },
+          { "title": "Meta Ads & Retargeting Funnels", "desc": "Laser audience segmentation, creative visual testing & lead generation on Facebook & Instagram (₹3,000/mo).", "icon": "share" },
+          { "title": "Data-Driven Performance Marketing", "desc": "Advanced full-funnel CAC reduction and conversion scaling on Meta (₹5,000) & Google (₹10,000).", "icon": "trending_up" },
+          { "title": "Model Reel Shoots & Video Content", "desc": "On-location shoots with professional models, scripted concepts, studio lighting & 4K editing (Starts at ₹6,000).", "icon": "videocam" },
+          { "title": "AI Promotional Videos & Teasers", "desc": "AI-generated short video reels with realistic voiceovers, dynamic visuals & captions (Starts at ₹599).", "icon": "movie" },
+          { "title": "Social Media Graphics Pack", "desc": "10 custom high-resolution branded post creatives, promotional flyers & banners (₹500 for 10 Posts).", "icon": "palette" },
+          { "title": "High-Conversion Website Development", "desc": "Lightning-fast, mobile-responsive, SEO-optimized business websites & landing funnels (Starts at ₹5,000).", "icon": "desktop_windows" },
+          { "title": "360° Brand Development Program", "desc": "Complete brand identity: custom logo, color system, style guidelines & launch roadmap (Starts at ₹20,000).", "icon": "workspace_premium" }
         ]
       },
       "faqs": [
         {
-          "question": "How are the Channel Partner (CP) plans structured?",
-          "answer": "Our CP plans are specifically tailored to the ticket size of your properties: (1) Project upto ₹80 Lakh at ₹75,000 for 3 Months, (2) Project ₹80 Lakh to ₹1.5 Cr at ₹90,000 for 3 Months, (3) Project ₹1.5 Cr to ₹3 Cr at ₹1.5 Lakh for 3 Months, and (4) Project Above ₹3 Cr & Builders at ₹2 Lakh for 3 Months. Each package gives you a dedicated 3-month growth engine."
+          "question": "Which plan is best for getting immediate customer inquiries?",
+          "answer": "For immediate high-intent leads, our Google Ads Management (₹7,500/mo) and Meta Ads (₹3,000/mo) or Performance Marketing (Meta ₹5,000 / Google ₹10,000) deliver measurable customer inquiries within days."
         },
         {
-          "question": "What is included across all CP marketing plans?",
-          "answer": "Every plan includes WhatsApp Marketing + Quality Data, AI Promotional Videos, Lead Verification & Qualification Support, Meta Ads, Google & YouTube Ads management, Project Landing Pages, Reels & Short-Form Content, Associated Channels network activation, and daily Campaign Optimization with weekly CPL reporting."
+          "question": "What is included in the Reel Shoot with Model (Starting ₹6,000)?",
+          "answer": "It includes an on-location video shoot featuring professional models/actors, scripted creative concepts, professional lighting, directional coaching, and 3-5 edited high-converting reels/shorts."
         },
         {
-          "question": "Does the fee include advertising budget or is it separate?",
-          "answer": "The package fee covers agency execution, creative production, video generation, landing page development, tele-calling lead qualification, and strategic management for the full 3-month cycle. Ad spend (paid directly to Meta and Google) is separate so you maintain 100% control over your daily ad budget without markups."
+          "question": "How does the AI Videos service work (Starting ₹599)?",
+          "answer": "Our team leverages state-of-the-art AI video tools to create engaging 30-45 second video reels with realistic voiceovers, dynamic visuals, and branded captions optimized for social media ads."
         },
         {
-          "question": "How does the Associated Channels collaboration work?",
-          "answer": "Through Associated Channels, we provide verified real estate marketing expertise, structured channel partner alignment, broker channel activation, and proven lead qualification funnels designed to deliver more quality leads, stronger brand presence, better project visibility, and end-to-end sales support."
+          "question": "How fast will my 10 Social Media Graphics (₹500) be delivered?",
+          "answer": "Initial drafts are typically delivered within 2-3 business days. You receive 10 custom high-resolution graphics matching your brand colors and typography, with one round of revisions included."
         },
         {
-          "question": "How does the Lead Verification and Qualification support work?",
-          "answer": "We ensure your sales team never wastes time on junk or fake inquiries. Our dedicated qualification team calls and WhatsApp-verifies every incoming inquiry to confirm the buyer's budget, preferred unit configuration (e.g., 2 BHK, 3 BHK, Penthouse), location interest, and buying timeframe before handing them over or booking a site visit."
-        },
-        {
-          "question": "How quickly will our campaigns and landing pages go live?",
-          "answer": "We execute rapidly. Your custom project landing page, ad creatives, WhatsApp funnels, and campaigns will be fully configured and live within 5 to 7 business days from onboarding and collateral collection."
-        },
-        {
-          "question": "Do we get complete ownership of the landing page, videos, and leads?",
-          "answer": "Yes, 100%. All landing pages, domain configurations, AI promotional videos, ad creative designs, and prospective buyer databases belong exclusively to your firm."
-        },
-        {
-          "question": "How do I get started with a Channel Partner Plan?",
-          "answer": "Select your ticket-size plan from the grid, click 'Select Plan & Buy Now' to initiate onboarding online, message us on WhatsApp, or call our team directly at 9096090701. We will schedule a kickoff session within 24 hours."
+          "question": "Can I combine multiple services into a custom package?",
+          "answer": "Absolutely! You can select multiple individual plans or contact our team for a tailored combo package combining website design, social media content, and paid advertising."
         }
       ]
     }

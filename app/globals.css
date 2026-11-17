@@ -1,4 +1,7 @@
 :root {
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-headline: 'Sora', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
   /* Core Brand Colors */
   --brand-forest: #1e4d42;
   --brand-forest-dark: #0E2721;

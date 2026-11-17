@@ -7,45 +7,88 @@ import { useRouter } from "next/navigation";
 
 const defaultCpTiers = [
   {
-    id: "cp_80l",
-    name: "Project Upto ₹80 Lakh",
-    scope: "Project upto ₹80 Lakh",
-    shortLabel: "Upto ₹80L",
-    price: 75000,
-    priceDisplay: "75,000",
-    period: "for 3 Months",
-    monthlyEffective: "₹25,000 Effective per Month"
-  },
-  {
-    id: "cp_1_5cr",
-    name: "Project ₹80 Lakh to ₹1.5 Cr",
-    scope: "Project ₹80 Lakh to ₹1.5 Cr",
-    shortLabel: "₹80L - ₹1.5Cr",
-    price: 90000,
-    priceDisplay: "90,000",
-    period: "for 3 Months",
-    monthlyEffective: "₹30,000 Effective per Month",
+    id: "plan_google_ads",
+    name: "Google Ads Management",
+    scope: "Google Ads Management",
+    shortLabel: "Google Ads (₹7.5K)",
+    price: 7500,
+    priceDisplay: "7,500",
+    period: "per Month",
+    monthlyEffective: "₹7,500 Effective per Month",
     popular: true
   },
   {
-    id: "cp_3cr",
-    name: "Project ₹1.5 Cr to ₹3 Cr",
-    scope: "Project ₹1.5 Cr to ₹3 Cr",
-    shortLabel: "₹1.5Cr - ₹3Cr",
-    price: 150000,
-    priceDisplay: "1.5 Lakh",
-    period: "for 3 Months",
-    monthlyEffective: "₹50,000 Effective per Month"
+    id: "plan_meta_ads",
+    name: "Meta Ads (FB & IG)",
+    scope: "Meta Ads",
+    shortLabel: "Meta Ads (₹3K)",
+    price: 3000,
+    priceDisplay: "3,000",
+    period: "per Month",
+    monthlyEffective: "₹3,000 Effective per Month"
   },
   {
-    id: "cp_above_3cr",
-    name: "Project Above ₹3 Cr & Builders",
-    scope: "Project Above ₹3 Cr / Builders",
-    shortLabel: "Above ₹3Cr",
-    price: 200000,
-    priceDisplay: "2 Lakh",
-    period: "for 3 Months",
-    monthlyEffective: "₹66,667 Effective per Month"
+    id: "plan_performance_marketing",
+    name: "Performance Marketing",
+    scope: "Performance Marketing",
+    shortLabel: "Performance (₹5K/10K)",
+    price: 5000,
+    priceDisplay: "5,000 / 10,000",
+    period: "per Month",
+    monthlyEffective: "Meta ₹5,000 | Google ₹10,000",
+    popular: true
+  },
+  {
+    id: "plan_reel_shoot",
+    name: "Reel Shoot with Model",
+    scope: "Reel Shoot with Model",
+    shortLabel: "Model Reel (₹6K+)",
+    price: 6000,
+    priceDisplay: "6,000",
+    period: "Starting from",
+    monthlyEffective: "Starts at ₹6,000 per Shoot"
+  },
+  {
+    id: "plan_ai_videos",
+    name: "AI Videos",
+    scope: "AI Videos",
+    shortLabel: "AI Videos (₹599+)",
+    price: 599,
+    priceDisplay: "599",
+    period: "Starting from",
+    monthlyEffective: "Starts at ₹599 per Video"
+  },
+  {
+    id: "plan_social_graphics",
+    name: "Social Media Graphics (10 Posts)",
+    scope: "Social Media Graphics",
+    shortLabel: "10 Posts (₹500)",
+    price: 500,
+    priceDisplay: "500",
+    period: "for 10 Posts",
+    monthlyEffective: "₹50 per Custom Graphic",
+    popular: true
+  },
+  {
+    id: "plan_website_dev",
+    name: "Website Development",
+    scope: "Website Development",
+    shortLabel: "Website (₹5K+)",
+    price: 5000,
+    priceDisplay: "5,000",
+    period: "Starting from",
+    monthlyEffective: "Starts at ₹5,000 One-Time"
+  },
+  {
+    id: "plan_brand_dev",
+    name: "Brand Development Program",
+    scope: "Brand Development Program",
+    shortLabel: "Brand Dev (₹20K+)",
+    price: 20000,
+    priceDisplay: "20,000",
+    period: "Starting from",
+    monthlyEffective: "Starts at ₹20,000 One-Time",
+    popular: true
   }
 ];
 
@@ -87,8 +130,8 @@ const defaultIndustries = [
 
 export default function PricingPopup({ dialogRef }) {
   const [industryList, setIndustryList] = useState(defaultIndustries);
-  const [selectedIndustry, setSelectedIndustry] = useState("real-estate");
-  const [selectedTierId, setSelectedTierId] = useState("cp_1_5cr");
+  const [selectedIndustry, setSelectedIndustry] = useState("agency-services");
+  const [selectedTierId, setSelectedTierId] = useState("plan_google_ads");
   const { addToCart, clearCart } = useCart();
   const router = useRouter();
 

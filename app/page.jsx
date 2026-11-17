@@ -50,48 +50,75 @@ const services = [
 const campaigns = [
   {
     icon: "ads_click",
-    title: "Google Ads Management & PPC",
-    body: "High-intent search engine marketing (SEM) campaigns with optimized landing pages, tracking, and continuous ROAS scaling.",
-    tags: ["Search Ads", "Lead Generation", "PPC"],
-    fit: "Paid Search Growth",
-    price: "Starts at ₹4,999/mo",
-    link: "/pricing#ads"
+    title: "Google Ads Management",
+    body: "High-intent Google Search, PPC, Display & Performance Max ad campaigns with conversion tracking, keyword optimization, and continuous ROAS scaling.",
+    tags: ["Search Ads", "PPC", "Conversion Tracking", "ROAS Scaling"],
+    fit: "Intent-driven lead generation & buyer acquisition",
+    price: "₹7,500/-",
+    link: "/pricing#google-ads"
   },
   {
-    icon: "mail",
-    title: "Facebook Ads & Social Marketing",
-    body: "Data-driven audience targeting, creative testing, and strategic retargeting for accelerated brand awareness and sales growth.",
-    tags: ["Social Ads", "Instagram Marketing", "Retargeting"],
-    fit: "Social Media Sales",
-    price: "Starts at ₹2,499/mo",
-    link: "/pricing#ads"
+    icon: "share",
+    title: "Meta Ads (FB & Instagram)",
+    body: "Laser-focused audience targeting, creative ad set building, demographic research, retargeting funnels, and lead generation across Instagram & Facebook.",
+    tags: ["Facebook Ads", "Instagram Ads", "Retargeting", "Lead Gen"],
+    fit: "Social media customer acquisition & viral reach",
+    price: "₹3,000/-",
+    link: "/pricing#meta-ads"
   },
   {
-    icon: "webhook",
-    title: "SEO Web Design & Landing Pages",
-    body: "High-performance, CRO-focused web development optimized for search engines, fast loading speeds, and maximum conversions.",
-    tags: ["SEO Web Design", "UX/UI", "Core Web Vitals"],
-    fit: "Conversion Optimization",
-    price: "Starts at ₹7,499",
-    link: "/pricing#websites"
+    icon: "trending_up",
+    title: "Performance Marketing",
+    body: "Data-backed multi-channel performance marketing engineered to lower CAC, scale conversion rates, and maximize end-to-end return on ad spend.",
+    tags: ["Meta Ads (₹5,000)", "Google Ads (₹10,000)", "CAC Reduction", "ROAS Scaling"],
+    fit: "Scaling brands seeking predictable high-volume ROI",
+    price: "Meta ₹5,000 | Google ₹10,000",
+    link: "/pricing#performance-marketing"
+  },
+  {
+    icon: "videocam",
+    title: "Reel Shoot with Model",
+    body: "Complete on-location professional video shoot featuring hired models/actors, scripted creative concepts, professional lighting, directional coaching, and viral reel edits.",
+    tags: ["Model Shoot", "Scripted Concepts", "Viral Reels", "4K Video"],
+    fit: "Brands, fashion, lifestyle, clinics & real estate",
+    price: "Starts at ₹6,000/-",
+    link: "/pricing#reel-shoot"
   },
   {
     icon: "movie",
-    title: "AI Video Production for Ads",
-    body: "Engaging short-form video concepts, scriptwriting, and AI-driven production for YouTube, Instagram, and TikTok marketing.",
-    tags: ["YouTube Shorts", "Instagram Reels", "Video Ads"],
-    fit: "Viral Video Content",
-    price: "Starts at ₹4,500",
-    link: "/pricing#aivideo"
+    title: "AI Videos",
+    body: "Hyper-engaging AI-generated short videos, cinematic product teasers, AI avatar voiceovers, and dynamic social media reels engineered for ads.",
+    tags: ["AI Avatars", "Reels & Shorts", "Product Teasers", "Voiceovers"],
+    fit: "Affordable viral content & video ad campaigns",
+    price: "Starts at ₹599/-",
+    link: "/pricing#ai-videos"
   },
   {
-    icon: "post_add",
-    title: "Social Media Content & SEO",
-    body: "High-engagement organic social media posts, SEO-optimized captions, and strategic content scheduling for brand growth.",
-    tags: ["Content Creation", "Brand Growth", "SMM"],
-    fit: "Active Brand Building",
-    price: "Starts at ₹599",
-    link: "/pricing#creative"
+    icon: "palette",
+    title: "Social Media Graphics",
+    body: "10 custom branded high-resolution social media graphic designs, promotional posters, product flyers, and carousel posts tailored for Instagram, Facebook, and LinkedIn.",
+    tags: ["10 Custom Posts", "Brand Aesthetics", "Carousels", "Flyers"],
+    fit: "Daily social media presence & engagement",
+    price: "₹500 (10 Posts)",
+    link: "/pricing#social-graphics"
+  },
+  {
+    icon: "desktop_windows",
+    title: "Website Development",
+    body: "Modern, lightning-fast, mobile-responsive business websites and landing pages built with clean code, SEO optimization, and high-conversion lead capture funnels.",
+    tags: ["Mobile Responsive", "Landing Pages", "Fast Speed", "Lead Capture"],
+    fit: "Businesses establishing a powerful digital presence",
+    price: "Starts at ₹5,000/-",
+    link: "/pricing#website-development"
+  },
+  {
+    icon: "workspace_premium",
+    title: "Brand Development Program",
+    body: "Comprehensive end-to-end brand identity transformation: custom logo design, color palette, typography system, brand voice guidelines, marketing collateral, and launch roadmap.",
+    tags: ["Logo & Identity", "Brand Guidelines", "Collateral Kit", "Market Strategy"],
+    fit: "Established businesses & startups creating market authority",
+    price: "Starts at ₹20,000/-",
+    link: "/pricing#brand-development"
   }
 ];
 
@@ -270,14 +297,30 @@ export default function Home() {
           <div className="campaign-grid">
             {campaigns.map((campaign, i) => (
               <article className={`campaign-card reveal reveal-delay-${(i % 3) + 1}`} key={campaign.title}>
-                <Icon name={campaign.icon} />
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "14px" }}>
+                  <Icon name={campaign.icon} />
+                  <span
+                    style={{
+                      background: "rgba(185, 151, 79, 0.12)",
+                      color: "#B9974F",
+                      border: "1px solid rgba(185, 151, 79, 0.35)",
+                      padding: "4px 12px",
+                      borderRadius: "100px",
+                      fontSize: "0.82rem",
+                      fontWeight: "700",
+                      letterSpacing: "0.2px"
+                    }}
+                  >
+                    {campaign.price}
+                  </span>
+                </div>
                 <h3>{campaign.title}</h3>
                 <p>{campaign.body}</p>
                 <div className="tag-row">
                   {campaign.tags.map((tag) => <span key={tag}>{tag}</span>)}
                 </div>
                 <small>Recommended for: {campaign.fit}</small>
-                <a href={campaign.link} className="campaign-pricing-btn">Check Pricing</a>
+                <a href={campaign.link} className="campaign-pricing-btn">Explore Plan &rarr;</a>
               </article>
             ))}
           </div>
