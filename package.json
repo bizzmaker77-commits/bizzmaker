@@ -1,23 +1,15 @@
 {
-  "name": "bizzmaker",
+  "name": "ai-digital-neural-tech",
   "version": "1.0.0",
-  "description": "Bizzmaker - Integrated AI Digital Marketing Platform & WorkForce Management System",
+  "description": "AI Digital Web - High-Performance Marketing Platform & Admin CMS",
   "private": true,
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
-    "build": "prisma contract emit && next build",
-    "start": "next start --hostname 127.0.0.1",
-    "postinstall": "prisma contract emit",
-    "seed:dummy": "node scripts/generate-dummy-db.js",
-    "db:export": "node scripts/consolidate-full-database.js",
-    "db:push": "node scripts/push-to-new-database.js"
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1"
   },
   "dependencies": {
-    "@prisma/client": "^5.22.0",
-    "@prisma/orm-postgres": "8.0.0-rc.23",
-    "bcryptjs": "^3.0.3",
     "googleapis": "^173.0.0",
-    "lucide-react": "^1.72.0",
     "mysql2": "^3.11.0",
     "next": "^15.3.0",
     "nextjs": "^0.0.3",
@@ -25,12 +17,10 @@
     "razorpay": "^2.9.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "twilio": "^6.0.2",
-    "xlsx": "^0.18.5"
+    "twilio": "^6.0.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.5",
-    "prisma": "8.0.0-rc.33",
     "tailwindcss": "^4.3.5"
   }
 }

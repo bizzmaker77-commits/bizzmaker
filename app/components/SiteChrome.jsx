@@ -147,8 +147,8 @@ export function SiteHeader({ active = "home" }) {
         {/* Simple Login Button */}
         <a
           className="nav-button nav-button-employee"
-          href="/login"
-          title="Login to Portal"
+          href="/admin"
+          title="Admin Portal"
           style={{
             background: "rgba(30, 77, 66, 0.08)",
             border: "1px solid rgba(30, 77, 66, 0.25)",
@@ -191,12 +191,12 @@ export function SiteHeader({ active = "home" }) {
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.15)", paddingTop: "10px", marginTop: "6px", display: "flex", flexDirection: "column", gap: "6px" }}>
             <a
               className="mobile-menu-cta"
-              href="/login"
+              href="/admin"
               style={{ background: "#1e4d42", color: "#fff", display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "8px", padding: "10px 14px", borderRadius: "8px", fontSize: "13px" }}
               onClick={() => setMenuOpen(false)}
             >
               <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>login</span>
-              <span>Login to Dashboard / Portal</span>
+              <span>Login / Admin Portal</span>
             </a>
           </div>
           {isVisible("home_contact") && (
