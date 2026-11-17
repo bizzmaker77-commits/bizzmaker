@@ -14,8 +14,11 @@
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
+    "@prisma/composer": "0.38.0",
+    "@prisma/composer-prisma-cloud": "0.38.0",
     "@prisma/orm-postgres": "8.0.0-rc.23",
     "bcryptjs": "^3.0.3",
+    "effect": "4.0.5",
     "googleapis": "^173.0.0",
     "lucide-react": "^1.72.0",
     "mysql2": "^3.11.0",
@@ -32,5 +35,12 @@
     "@tailwindcss/postcss": "^4.3.5",
     "prisma": "8.0.0-rc.33",
     "tailwindcss": "^4.3.5"
+  },
+  "overrides": {
+    "effect": "4.0.5",
+    "@effect/vitest": "4.0.5",
+    "@effect/platform-bun": "4.0.5",
+    "@effect/platform-node": "4.0.5",
+    "@effect/platform-node-shared": "4.0.5"
   }
 }
