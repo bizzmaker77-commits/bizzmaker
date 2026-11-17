@@ -1,6 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'standalone',
+  output: 'standalone',
+  // JSON files the app reads from `process.cwd()/data` at run time; the
+  // standalone build output must carry them.
+  outputFileTracingIncludes: {
+    '/**': [
+      './data/dummy-db.json',
+      './data/portfolioData.json',
+      './data/pricingData.json',
+      './data/industryPlans.json',
+      './data/visibilitySettings.json',
+    ],
+  },
   async redirects() {
     return [];
   },

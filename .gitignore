@@ -16,3 +16,5 @@ public/ai_videos/
 public/reels/
 scratch/
 
+.prisma-composer/
+.alchemy/
