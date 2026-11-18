@@ -10,6 +10,9 @@ import { VisibilityProvider } from "./context/VisibilityContext";
 
 export const metadata = {
   metadataBase: new URL("https://www.aidigital.biz"),
+  icons: {
+    icon: "/Logo.png",
+  },
   title: "AI Digital | Neural Growth Marketing",
   description:
     "AI-powered digital marketing for SEO, performance campaigns, social growth, design, and analytics.",
@@ -68,9 +71,8 @@ export default function RootLayout({ children }) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/Logo.png" type="image/png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -102,6 +104,31 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
+      </head>
+      <body suppressHydrationWarning>
+        {gtmId && (
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+            }}
+          />
+        )}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=975563025122146&ev=PageView&noscript=1" alt="" />`,
+          }}
+        />
+        <VisibilityProvider>
+          <GlobalCursorGlow />
+          <Suspense fallback={null}>
+            <VisitorTracker />
+          </Suspense>
+          {children}
+          <ChatWidget />
+          <WhatsAppFloating />
+          <BackToTop />
+        </VisibilityProvider>
+
         {gtmId && (
           <Script
             id="gtm-script"
@@ -152,37 +179,6 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-      </head>
-      <body>
-        {gtmId && (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-              height="0"
-              width="0"
-              style={{ display: "none", visibility: "hidden" }}
-            />
-          </noscript>
-        )}
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=975563025122146&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
-        <VisibilityProvider>
-          <GlobalCursorGlow />
-          <Suspense fallback={null}>
-            <VisitorTracker />
-          </Suspense>
-          {children}
-          <ChatWidget />
-          <WhatsAppFloating />
-          <BackToTop />
-        </VisibilityProvider>
       </body>
     </html>
   );
