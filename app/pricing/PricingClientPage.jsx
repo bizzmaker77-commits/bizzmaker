@@ -347,35 +347,8 @@ export default function PricingClientPage() {
       <section id="plans" className="cp-pricing-hero-section">
         <div className="cp-container">
           {/* Header Banner */}
-          <div className="cp-header-block reveal">
-            <div className="cp-badge-pill">
-              <span className="material-symbols-outlined cp-badge-icon">verified</span>
-              <span>OFFICIAL AGENCY SERVICE PLANS &amp; PRICING</span>
-            </div>
-            
-            <h1 className="cp-main-title">
-              Transparent Growth Plans for <span className="cp-title-accent">Maximum Business ROI</span>
-            </h1>
-
-            <p className="cp-tagline">
-              <span className="cp-tagline-quote">"Your Success Our Business"</span>
-              <span className="cp-tagline-sub"> — High-impact digital marketing, media production, and web development with clear, upfront pricing.</span>
-            </p>
-          </div>
-
-          {/* 4 Core Pillars Strip (Horizontal / 4 Cards) */}
-          <div className="cp-pillars-strip reveal delay-100">
-            {pillars.map((pillar, idx) => (
-              <div className="cp-pillar-card" key={idx}>
-                <div className="cp-pillar-icon-box">
-                  <span className="material-symbols-outlined">{pillar.icon || "star"}</span>
-                </div>
-                <div className="cp-pillar-info">
-                  <h3 className="cp-pillar-title">{pillar.title}</h3>
-                  <p className="cp-pillar-desc">{pillar.desc}</p>
-                </div>
-              </div>
-            ))}
+          <div className="cp-header-block reveal" style={{ marginBottom: "20px" }}>
+            <h1 className="cp-main-title">Plans</h1>
           </div>
 
           {/* Category Filter Tabs */}
