@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     question: "How much do your marketing services cost?",
-    answer: "Our services are highly affordable and tailored for growing businesses. Pricing starts as low as ₹500 for 10 Social Media Graphics, ₹599 for AI Videos, ₹3,000 for Meta Ads, ₹5,000 for Website Development, ₹6,000 for Reel Shoots with Models, ₹7,500 for Google Ads Management, and ₹20,000 for our complete Brand Development Program."
+    answer: "Our services are highly affordable and tailored for growing businesses. Pricing starts as low as ₹500 for 10 Social Media Graphics, ₹599 for AI Videos, ₹3,000 for Meta Ads, ₹5,000 for Website Development, ₹6,000 for Professional Reel Shoots, ₹7,500 for Google Ads Management, and ₹20,000 for our complete Brand Development Program."
   },
   {
     question: "What makes AI Digital different?",

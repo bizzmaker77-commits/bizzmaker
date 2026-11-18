@@ -75,20 +75,20 @@ const defaultCpTiers = [
   },
   {
     id: "plan_reel_shoot",
-    name: "Reel Shoot with Model",
-    scope: "Reel Shoot with Model",
+    name: "Reel Shoot",
+    scope: "Reel Shoot",
     ticketRange: "Media Production",
     category: "media",
     price: 6000,
     priceDisplay: "6,000",
     period: "Starting from",
     monthlyEffective: "Starts at ₹6,000 per Shoot",
-    subtitle: "On-Location Shoot with Professional Models, Scripting & 4K Video Editing",
+    subtitle: "On-Location Shoot with Scripting, Direction & 4K Video Editing",
     icon: "videocam",
     popular: false,
     features: [
-      "Professional Model / Actor Included",
       "On-Location HD / 4K Shoot",
+      "Direction & Creative Coaching",
       "Scripted Concepts & Storylines",
       "Studio Lighting & Pro Audio Sync",
       "3-5 High-Converting Reels/Shorts"
@@ -193,7 +193,7 @@ const defaultPillars = [
   },
   {
     title: "Professional Media & Video Shoots",
-    desc: "On-location model reel shoots (₹6,000) and high-impact AI promotional video production (₹599).",
+    desc: "On-location reel shoots (₹6,000) and high-impact AI promotional video production (₹599).",
     icon: "videocam"
   },
   {
@@ -207,7 +207,7 @@ const defaultDeliverables = [
   { title: "Google Ads & PPC Campaigns", desc: "High-intent keyword targeting, negative keyword filtering, conversion tracking & monthly ROAS scaling (₹7,500/mo).", icon: "ads_click" },
   { title: "Meta Ads & Retargeting Funnels", desc: "Laser audience segmentation, creative visual testing & lead generation on Facebook & Instagram (₹3,000/mo).", icon: "share" },
   { title: "Data-Driven Performance Marketing", desc: "Advanced full-funnel CAC reduction and conversion scaling on Meta (₹5,000) & Google (₹10,000).", icon: "trending_up" },
-  { title: "Model Reel Shoots & Video Content", desc: "On-location shoots with professional models, scripted concepts, studio lighting & 4K editing (Starts at ₹6,000).", icon: "videocam" },
+  { title: "Professional Reel Shoots & Video Content", desc: "On-location shoots with scripted concepts, studio lighting & 4K editing (Starts at ₹6,000).", icon: "videocam" },
   { title: "AI Promotional Videos & Teasers", desc: "AI-generated short video reels with realistic voiceovers, dynamic visuals & captions (Starts at ₹599).", icon: "movie" },
   { title: "Social Media Graphics Pack", desc: "10 custom high-resolution branded post creatives, promotional flyers & banners (₹500 for 10 Posts).", icon: "palette" },
   { title: "High-Conversion Website Development", desc: "Lightning-fast, mobile-responsive, SEO-optimized business websites & landing funnels (Starts at ₹5,000).", icon: "desktop_windows" },
@@ -220,8 +220,8 @@ const defaultFaqs = [
     answer: "For immediate high-intent leads, our Google Ads Management (₹7,500/mo) and Meta Ads (₹3,000/mo) or Performance Marketing (Meta ₹5,000 / Google ₹10,000) deliver measurable customer inquiries within days."
   },
   {
-    question: "What is included in the Reel Shoot with Model (Starting ₹6,000)?",
-    answer: "It includes an on-location video shoot featuring professional models/actors, scripted creative concepts, professional lighting, directional coaching, and 3-5 edited high-converting reels/shorts."
+    question: "What is included in the Reel Shoot (Starting ₹6,000)?",
+    answer: "It includes an on-location video shoot featuring scripted creative concepts, professional lighting, directional coaching, and 3-5 edited high-converting reels/shorts."
   },
   {
     question: "How does the AI Videos service work (Starting ₹599)?",

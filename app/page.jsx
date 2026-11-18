@@ -74,9 +74,9 @@ const campaigns = [
   },
   {
     icon: "videocam",
-    title: "Reel Shoot with Model",
-    body: "Complete on-location professional video shoot featuring hired models/actors, scripted creative concepts, professional lighting, directional coaching, and viral reel edits.",
-    tags: ["Model Shoot", "Scripted Concepts", "Viral Reels", "4K Video"],
+    title: "Reel Shoot",
+    body: "Complete on-location professional video shoot featuring scripted creative concepts, professional lighting, directional coaching, and viral reel edits.",
+    tags: ["On-Location Shoot", "Scripted Concepts", "Viral Reels", "4K Video"],
     fit: "Brands, fashion, lifestyle, clinics & real estate",
     link: "/pricing#reel-shoot"
   },

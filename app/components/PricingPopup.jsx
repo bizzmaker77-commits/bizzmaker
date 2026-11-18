@@ -40,9 +40,9 @@ const defaultCpTiers = [
   },
   {
     id: "plan_reel_shoot",
-    name: "Reel Shoot with Model",
-    scope: "Reel Shoot with Model",
-    shortLabel: "Model Reel (₹6K+)",
+    name: "Reel Shoot",
+    scope: "Reel Shoot",
+    shortLabel: "Reel Shoot (₹6K+)",
     price: 6000,
     priceDisplay: "6,000",
     period: "Starting from",

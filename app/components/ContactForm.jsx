@@ -181,7 +181,7 @@ export default function ContactForm() {
           <option value="Meta Ads (₹3,000)">Meta Ads - FB & Instagram (₹3,000)</option>
           <option value="Performance Marketing - Meta (₹5,000)">Performance Marketing - Meta (₹5,000)</option>
           <option value="Performance Marketing - Google (₹10,000)">Performance Marketing - Google (₹10,000)</option>
-          <option value="Reel Shoot with Model (Starting ₹6,000)">Reel Shoot with Model (Starting ₹6,000)</option>
+          <option value="Reel Shoot (Starting ₹6,000)">Reel Shoot (Starting ₹6,000)</option>
           <option value="AI Videos (Starting ₹599)">AI Videos (Starting ₹599)</option>
           <option value="Social Media Graphics - 10 Posts (₹500)">Social Media Graphics - 10 Posts (₹500)</option>
           <option value="Website Development (Starting ₹5,000)">Website Development (Starting ₹5,000)</option>
