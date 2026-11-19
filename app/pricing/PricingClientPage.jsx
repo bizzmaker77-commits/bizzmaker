@@ -393,7 +393,7 @@ export default function PricingClientPage() {
                 <span className="material-symbols-outlined cp-grid-icon">tune</span>
                 <span className="cp-grid-label">CHOOSE YOUR GROWTH PACKAGE</span>
               </div>
-              <span className="cp-grid-hint">Click any card to inspect deliverables &amp; proceed</span>
+              <span className="cp-grid-hint">Click any card to select plan &amp; proceed</span>
             </div>
 
             <div className="cp-plans-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
@@ -585,62 +585,6 @@ export default function PricingClientPage() {
             </div>
           </div>
 
-          {/* Compressed Deliverables & Outcomes Section */}
-          <div className="cp-deliverables-compact reveal delay-300">
-            {/* Associate Channel Banner */}
-            <div className="cp-asicote-card">
-              <div className="cp-asicote-header">
-                <div className="cp-asicote-brand-wrap">
-                  <span className="material-symbols-outlined cp-asicote-icon">handshake</span>
-                  <span className="cp-asicote-brand">AI DIGITAL</span>
-                  <span className="cp-asicote-sub">GROWTH ASSURANCE</span>
-                </div>
-                <div className="cp-asicote-tag">Included with All 8 Plans</div>
-              </div>
-
-              <div className="cp-outcomes-grid">
-                <div className="cp-outcome-item">
-                  <span className="material-symbols-outlined">check_circle</span>
-                  <span>More Verified Leads</span>
-                </div>
-                <div className="cp-outcome-item">
-                  <span className="material-symbols-outlined">check_circle</span>
-                  <span>Stronger Brand Authority</span>
-                </div>
-                <div className="cp-outcome-item">
-                  <span className="material-symbols-outlined">check_circle</span>
-                  <span>High-Intent Targeting</span>
-                </div>
-                <div className="cp-outcome-item">
-                  <span className="material-symbols-outlined">check_circle</span>
-                  <span>End-to-End Dedicated Support</span>
-                </div>
-              </div>
-            </div>
-
-            {/* 8 Core Deliverables in a compact 4x2 grid */}
-            <div className="cp-services-section">
-              <div className="cp-services-heading">
-                <span>WHAT'S INCLUDED ACROSS OUR AGENCY SERVICES</span>
-                <span className="cp-services-count">{deliverables.length} Core Capabilities</span>
-              </div>
-
-              <div className="cp-services-grid">
-                {deliverables.map((feat, idx) => (
-                  <div className="cp-service-card" key={idx}>
-                    <div className="cp-service-icon">
-                      <Icon name={feat.icon || "check_circle"} />
-                    </div>
-                    <div className="cp-service-text">
-                      <strong>{feat.title}</strong>
-                      <p>{feat.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
           {/* Compact Contact Strip */}
           <div className="cp-contact-strip reveal delay-350">
             <a href="tel:9096090701" className="cp-contact-item">
@@ -652,7 +596,7 @@ export default function PricingClientPage() {
             </a>
 
             <a
-              href="https://www.aidigital.biz"
+              href="https://www.bizzmaker.in"
               target="_blank"
               rel="noopener noreferrer"
               className="cp-contact-item"
@@ -660,7 +604,7 @@ export default function PricingClientPage() {
               <span className="material-symbols-outlined">language</span>
               <div>
                 <span className="cp-contact-label">VISIT OUR WEBSITE</span>
-                <strong>www.aidigital.biz</strong>
+                <strong>www.bizzmaker.in</strong>
               </div>
             </a>
 
