@@ -182,7 +182,7 @@ export default function PricingPopup({ dialogRef }) {
   };
 
   const getWhatsAppInquiryUrl = () => {
-    const msg = `Hi AiDigital team! I am interested in the ${currentIndustry.name} Channel Partner package (${activeTier.name} - ₹${activeTier.priceDisplay}). Please connect with me.`;
+    const msg = `Hi BizzMaker team! I am interested in the ${currentIndustry.name} Channel Partner package (${activeTier.name} - ₹${activeTier.priceDisplay}). Please connect with me.`;
     return `https://wa.me/919096090701?text=${encodeURIComponent(msg)}`;
   };
 
@@ -693,7 +693,7 @@ export default function PricingPopup({ dialogRef }) {
           <div className="popup-compact-brand">
             <Image
               src="/Logo.png"
-              alt="AI Digital"
+              alt="BizzMaker"
               width={85}
               height={48}
               className="popup-header-logo"
@@ -701,7 +701,7 @@ export default function PricingPopup({ dialogRef }) {
             />
             <div>
               <h2 className="popup-compact-title">
-                Elevate Your {currentIndustry.name} Presence with <span>aidigitals</span>
+                Elevate Your {currentIndustry.name} Presence with <span>BizzMaker</span>
               </h2>
               <p className="popup-compact-sub">
                 Join 300+ customer businesses & builders accelerating site visits & closings

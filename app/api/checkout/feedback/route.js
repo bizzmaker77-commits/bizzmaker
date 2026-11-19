@@ -153,7 +153,7 @@ ${additionalNotes ? `\nAdditional Feedback:\n${additionalNotes}` : ""}
 Please follow up with this potential customer.
 
 Best regards,
-AI Digital Notification System`;
+BizzMaker Notification System`;
 
       await sendEmail({
         to: adminEmail,

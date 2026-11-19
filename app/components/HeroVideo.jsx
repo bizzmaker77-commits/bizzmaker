@@ -70,29 +70,6 @@ export default function HeroVideo() {
           </a>
         </div>
 
-        {/* 5. Key Trust Metrics Matrix */}
-        <div className="modern-hero-trust-matrix reveal delay-250">
-          <div className="modern-hero-trust-item">
-            <strong>500+</strong>
-            <span>Campaigns Launched</span>
-          </div>
-          <div className="modern-hero-trust-sep" />
-          <div className="modern-hero-trust-item">
-            <strong>₹15Cr+</strong>
-            <span>Ad Spend Scaled</span>
-          </div>
-          <div className="modern-hero-trust-sep" />
-          <div className="modern-hero-trust-item">
-            <strong>6.8x</strong>
-            <span>Average ROAS</span>
-          </div>
-          <div className="modern-hero-trust-sep" />
-          <div className="modern-hero-trust-item">
-            <strong>4.9/5 ★</strong>
-            <span>Client Satisfaction</span>
-          </div>
-        </div>
-
         {/* 6. Hero Visual Showcase Card (Houses BizzMaker GIF) */}
         <div className="modern-hero-visual-frame reveal delay-300" ref={containerRef}>
           <div className="modern-hero-visual-inner">

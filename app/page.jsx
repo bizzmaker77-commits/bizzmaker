@@ -281,7 +281,7 @@ export default function Home() {
             <span className="eyebrow">AI-powered marketing services</span>
             <h2>Choose the Right Services for Your Growth Goal</h2>
             <p>
-              From search visibility to lead generation, AI Digital creates
+              From search visibility to lead generation, BizzMaker creates
               strategy, execution and analytics to help businesses grow with
               measurable campaigns.
             </p>
@@ -289,9 +289,6 @@ export default function Home() {
           <div className="campaign-grid">
             {campaigns.map((campaign, i) => (
               <article className={`campaign-card reveal reveal-delay-${(i % 3) + 1}`} key={campaign.title}>
-                <div style={{ marginBottom: "14px" }}>
-                  <Icon name={campaign.icon} />
-                </div>
                 <h3>{campaign.title}</h3>
                 <p>{campaign.body}</p>
                 <div className="tag-row">
@@ -309,7 +306,7 @@ export default function Home() {
       {isVisible("home_why_us") && (
         <section id="why" className="section why">
           <div className="section-heading compact">
-            <h2>Why Choose AI Digital</h2>
+            <h2>Why Choose BizzMaker</h2>
           </div>
           <div className="why-grid">
             {whyItems.map((item, i) => (

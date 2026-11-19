@@ -46,8 +46,8 @@ export function Icon({ name, className = "" }) {
 
 export function Logo() {
   return (
-    <a className="logo" href="/" aria-label="AI Digital home">
-      <Image src="/Logo.png" alt="AI Digital Logo" width={180} height={101} priority />
+    <a className="logo" href="/" aria-label="BizzMaker home">
+      <Image src="/Logo.png" alt="BizzMaker Logo" width={180} height={101} priority />
     </a>
   );
 }
@@ -246,7 +246,7 @@ export function SiteFooter() {
           <Logo />
           <strong>Innovate. Connect. Grow.</strong>
           <p>
-            AI Digital is an AI-powered digital marketing agency helping
+            BizzMaker is an AI-powered digital marketing agency helping
             businesses improve visibility, engagement, leads and measurable growth.
           </p>
           <div className="socials">
@@ -319,7 +319,7 @@ export function SiteFooter() {
           );
         })}
       </div>
-      <div className="copyright">Copyright 2013-2026 AI Digital, All Right Reserved</div>
+      <div className="copyright">Copyright 2013-2026 BizzMaker, All Right Reserved</div>
     </footer>
   );
 }

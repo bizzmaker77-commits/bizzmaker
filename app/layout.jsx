@@ -13,11 +13,11 @@ export const metadata = {
   icons: {
     icon: "/Logo.png",
   },
-  title: "AI Digital | Neural Growth Marketing",
+  title: "BizzMaker | Neural Growth Marketing",
   description:
     "AI-powered digital marketing for SEO, performance campaigns, social growth, design, and analytics.",
   keywords: [
-    "AI Digital",
+    "BizzMaker",
     "Neural Growth Marketing",
     "Digital Marketing Agency",
     "SEO Services",
@@ -28,11 +28,11 @@ export const metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "AI Digital | Neural Growth Marketing",
+    title: "BizzMaker | Neural Growth Marketing",
     description:
       "AI-powered digital marketing for SEO, performance campaigns, social growth, design, and analytics.",
     url: "https://www.aidigital.biz",
-    siteName: "AI Digital",
+    siteName: "BizzMaker",
     locale: "en_US",
     type: "website",
     images: [
@@ -40,13 +40,13 @@ export const metadata = {
         url: "https://www.aidigital.biz/Logo.png",
         width: 1600,
         height: 900,
-        alt: "AI Digital Logo",
+        alt: "BizzMaker Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Digital | Neural Growth Marketing",
+    title: "BizzMaker | Neural Growth Marketing",
     description:
       "AI-powered digital marketing for SEO, performance campaigns, social growth, design, and analytics.",
     images: ["https://www.aidigital.biz/Logo.png"],
@@ -85,7 +85,7 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "AI Digital",
+              name: "BizzMaker",
               url: "https://www.aidigital.biz",
               logo: "https://www.aidigital.biz/Logo.png",
               description:

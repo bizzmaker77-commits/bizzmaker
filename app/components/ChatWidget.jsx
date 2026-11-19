@@ -17,7 +17,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState([
     {
       sender: "model",
-      text: "Hi! I'm AiDigital Bot, your growth assistant. Ask me anything about our digital marketing, web development packages, or growth plans!"
+      text: "Hi! I'm BizzMaker Bot, your growth assistant. Ask me anything about our digital marketing, web development packages, or growth plans!"
     }
   ]);
   const [inputValue, setInputValue] = useState("");
@@ -97,7 +97,7 @@ export default function ChatWidget() {
                 </svg>
               </div>
               <div>
-                <h4 className="bot-title">AiDigital Bot</h4>
+                <h4 className="bot-title">BizzMaker Bot</h4>
                 <p className="bot-status">Online & ready to grow</p>
               </div>
             </div>

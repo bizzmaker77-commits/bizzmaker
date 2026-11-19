@@ -1,12 +1,12 @@
-# 🚀 AI Digital Web — Marketing Platform & Admin CMS
+# 🚀 BizzMaker — Digital Marketing Platform & Admin CMS
 
-**AI Digital Web** is a high-performance Next.js marketing and digital agency platform featuring dynamic portfolio showcases, pricing plans, automated lead capture, and an administrative CMS suite.
+**BizzMaker** is a high-performance Next.js digital marketing agency platform featuring dynamic portfolio showcases, pricing plans, automated lead capture, and an administrative CMS suite.
 
 ---
 
 ## 🌟 Key Features
 
-### 1. Core AI Digital Marketing Website
+### 1. Core BizzMaker Digital Marketing Website
 - Full responsive marketing website with interactive showcases, services, client portfolios, transparent pricing, and blogs.
 - Lead capture via contact forms, WhatsApp integration, and career job applications.
 - Direct payment integration with Razorpay.

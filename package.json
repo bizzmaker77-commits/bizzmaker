@@ -1,7 +1,7 @@
 {
-  "name": "ai-digital-neural-tech",
+  "name": "bizzmaker",
   "version": "1.0.0",
-  "description": "AI Digital Web - High-Performance Marketing Platform & Admin CMS",
+  "description": "BizzMaker - High-Performance Digital Marketing Platform & Admin CMS",
   "private": true,
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",

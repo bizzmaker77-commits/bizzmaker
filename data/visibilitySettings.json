@@ -115,7 +115,7 @@
       "id": "home_why_us",
       "type": "section",
       "page_group": "home",
-      "name": "Why Choose AI Digital",
+      "name": "Why Choose BizzMaker",
       "description": "6 core value pillars and AI market advantages",
       "is_visible": true,
       "sort_order": 6
@@ -503,7 +503,7 @@
       "type": "section",
       "page_group": "portfolio",
       "name": "Industry: Digital Marketing",
-      "description": "AI Digital performance campaigns, ROI case studies, and ad promos",
+      "description": "BizzMaker performance campaigns, ROI case studies, and ad promos",
       "is_visible": false,
       "sort_order": 48
     },

@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Admin Portal | AI Digital",
-  description: "Administrative Portal for AI Digital",
+  title: "Admin Portal | BizzMaker",
+  description: "Administrative Portal for BizzMaker",
 };
 
 export default function LoginLayout({ children }) {

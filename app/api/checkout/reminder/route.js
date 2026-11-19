@@ -120,7 +120,7 @@ Plan Details:
 Please follow up with this potential customer on their selected date.
 
 Best regards,
-AI Digital Notification System`;
+BizzMaker Notification System`;
 
       await sendEmail({
         to: adminEmail,

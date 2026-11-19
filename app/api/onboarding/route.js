@@ -126,7 +126,7 @@ export async function POST(req) {
         [
           recordId,
           payment_id,
-          plans || "AI Digital Plan",
+          plans || "BizzMaker Plan",
           contact_name || null,
           alt_phone || null,
           business_type || "Sole Proprietorship",

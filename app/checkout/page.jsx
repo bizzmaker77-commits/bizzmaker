@@ -305,7 +305,7 @@ function CheckoutContent() {
 
     // Build WhatsApp message
     const waLines = [
-      "Hi AI Digital! 👋",
+      "Hi BizzMaker! 👋",
       "I would like to purchase the following plan:",
       "",
       `📦 *Plan:* ${checkoutPlanTitle}`,
@@ -1160,7 +1160,7 @@ function CheckoutContent() {
 
                     <a
                       href={`https://api.whatsapp.com/send?phone=919096090701&text=${encodeURIComponent(
-                        `Hi, I was checking out the ${selectedItem?.name || "Premium Plan"} on AI Digital (₹${finalTotal || "0"}) and wanted to discuss custom options or ask a few questions. My details: Name: ${customerName || "N/A"}, Phone: ${customerPhone || "N/A"}.`
+                        `Hi, I was checking out the ${selectedItem?.name || "Premium Plan"} on BizzMaker (₹${finalTotal || "0"}) and wanted to discuss custom options or ask a few questions. My details: Name: ${customerName || "N/A"}, Phone: ${customerPhone || "N/A"}.`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
