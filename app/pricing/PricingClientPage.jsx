@@ -237,6 +237,58 @@ const defaultFaqs = [
   }
 ];
 
+function PlanTierIcon({ tier }) {
+  const tierId = tier?.id || "";
+  const tierName = (tier?.name || tier?.scope || "").toLowerCase();
+
+  // 1. Google Ads - Real Google G Logo
+  if (tierId === "plan_google_ads" || (tierName.includes("google") && !tierName.includes("meta"))) {
+    return (
+      <svg width="32" height="32" viewBox="0 0 48 48" aria-label="Google Ads">
+        <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+        <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+        <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.91l7.35-5.73z"/>
+        <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+      </svg>
+    );
+  }
+
+  // 2. Meta Ads - Real Facebook Logo
+  if (tierId === "plan_meta_ads" || tierName.includes("meta") || tierName.includes("facebook")) {
+    return (
+      <svg width="34" height="34" viewBox="0 0 48 48" aria-label="Facebook Meta">
+        <circle cx="24" cy="24" r="23" fill="#1877F2"/>
+        <path fill="#FFFFFF" d="M26.7 38V24.5h4.5l.7-5.2h-5.2v-3.3c0-1.5.4-2.5 2.6-2.5h2.8V8.9c-.5-.1-2.1-.2-4-.2-4 0-6.7 2.4-6.7 6.9v3.7h-4.5v5.2h4.5V38h5.3z"/>
+      </svg>
+    );
+  }
+
+  // 3. Performance Marketing (Meta & Google)
+  if (tierId === "plan_performance_marketing") {
+    return (
+      <div style={{ display: "flex", alignItems: "center", gap: "5px" }} title="Google & Facebook Ads">
+        <svg width="22" height="22" viewBox="0 0 48 48" aria-label="Google">
+          <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+          <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+          <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.91l7.35-5.73z"/>
+          <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+        </svg>
+        <span style={{ color: "#FAD978", fontWeight: "800", fontSize: "13px" }}>+</span>
+        <svg width="22" height="22" viewBox="0 0 48 48" aria-label="Facebook">
+          <circle cx="24" cy="24" r="23" fill="#1877F2"/>
+          <path fill="#FFFFFF" d="M26.7 38V24.5h4.5l.7-5.2h-5.2v-3.3c0-1.5.4-2.5 2.6-2.5h2.8V8.9c-.5-.1-2.1-.2-4-.2-4 0-6.7 2.4-6.7 6.9v3.7h-4.5v5.2h4.5V38h5.3z"/>
+        </svg>
+      </div>
+    );
+  }
+
+  return (
+    <span className="material-symbols-outlined cp-building-icon">
+      {tier?.icon || "star"}
+    </span>
+  );
+}
+
 export default function PricingClientPage() {
   const { isVisible, isPageVisible } = useVisibility();
   const { addToCart, clearCart } = useCart();
@@ -432,9 +484,7 @@ export default function PricingClientPage() {
 
                     {/* Icon */}
                     <div className="cp-card-icon-wrap">
-                      <span className="material-symbols-outlined cp-building-icon">
-                        {tier.icon || "star"}
-                      </span>
+                      <PlanTierIcon tier={tier} />
                     </div>
 
                     {/* Scope / Title */}
