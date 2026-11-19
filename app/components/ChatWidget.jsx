@@ -17,7 +17,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState([
     {
       sender: "model",
-      text: "Hi! I'm AiDigital Bot, your growth assistant. Ask me anything about our digital marketing, web development packages, or Razorpay pricing plans!"
+      text: "Hi! I'm AiDigital Bot, your growth assistant. Ask me anything about our digital marketing, web development packages, or growth plans!"
     }
   ]);
   const [inputValue, setInputValue] = useState("");
