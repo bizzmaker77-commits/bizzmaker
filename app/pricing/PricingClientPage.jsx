@@ -445,7 +445,7 @@ export default function PricingClientPage() {
                 <span className="material-symbols-outlined cp-grid-icon">tune</span>
                 <span className="cp-grid-label">CHOOSE YOUR GROWTH PACKAGE</span>
               </div>
-              <span className="cp-grid-hint">Click any card to select plan &amp; proceed</span>
+              <span className="cp-grid-hint">Select a growth package to get started</span>
             </div>
 
             <div className="cp-plans-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
@@ -473,14 +473,6 @@ export default function PricingClientPage() {
                         TOP RECOMMENDED
                       </div>
                     )}
-
-                    {/* Radio / Selection Indicator */}
-                    <div className="cp-card-select-indicator">
-                      <span className="material-symbols-outlined">
-                        {isSelected ? "check_circle" : "radio_button_unchecked"}
-                      </span>
-                      <span>{isSelected ? "Selected Plan" : "Click to Select"}</span>
-                    </div>
 
                     {/* Icon */}
                     <div className="cp-card-icon-wrap">
@@ -573,10 +565,10 @@ export default function PricingClientPage() {
                           setSelectedTierId(tier.id);
                           handleBuyNow(tier);
                         }}
-                        className={`cp-card-btn ${isSelected ? "active" : ""}`}
+                        className="cp-card-btn active"
                       >
                         <span className="material-symbols-outlined">rocket_launch</span>
-                        {isSelected ? "Proceed with this Plan" : "Choose this Plan"}
+                        Choose Plan
                       </button>
                     </div>
                   </div>
