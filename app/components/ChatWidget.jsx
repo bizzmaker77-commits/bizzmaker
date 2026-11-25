@@ -48,7 +48,7 @@ export default function ChatWidget() {
 
     const userMessage = { sender: "user", text: query };
     const newMessages = [...messages, userMessage];
-    
+
     setMessages(newMessages);
     if (!textToSend) setInputValue("");
     setIsLoading(true);
